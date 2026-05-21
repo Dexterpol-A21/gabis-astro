@@ -1,0 +1,79 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Footer from "../components/Footer.astro";
+
+const lastUpdate = "Enero 2026";
+---
+
+<Layout title="Aviso de Privacidad | Gabis" forceHeaderVisible={true}>
+    <div
+        class="min-h-screen transition-colors duration-500 bg-[var(--theme-bg)] text-[var(--theme-text)] font-satoshi pt-24 md:pt-32 pb-10 px-6"
+    >
+        <div class="max-w-4xl mx-auto mb-12">
+            <h1
+                class="text-4xl md:text-5xl mb-8 leading-none uppercase"
+                style="font-family: var(--theme-font-title); color: var(--theme-accent);"
+            >
+                Aviso de Privacidad
+            </h1>
+
+            <div class="prose prose-lg prose-invert max-w-none opacity-90 text-[var(--theme-text)]">
+                <p class="mb-4">
+                    Última actualización: <strong>{lastUpdate}</strong>
+                </p>
+
+                <p class="mb-8">
+                    En <strong>Gabis</strong> (en adelante "Nosotros" o "el Restaurante"), valoramos tu confianza y nos comprometemos a proteger tu información personal. Este Aviso de Privacidad explica cómo recopilamos, usamos y protegemos tus datos cuando interactúas con nosotros, ya sea en nuestro establecimiento físico, a través de nuestro sitio web o por medios de contacto directo como WhatsApp.
+                </p>
+
+                <h3 class="text-2xl font-bold mt-8 mb-4">1. Identidad y Domicilio</h3>
+                <p>
+                    Gabis, ubicado en <strong>Guadalupe Victoria, 55010 Ecatepec de Morelos, Méx.</strong>, es el responsable del uso y protección de sus datos personales.
+                </p>
+
+                <h3 class="text-2xl font-bold mt-8 mb-4">2. Datos que Recopilamos</h3>
+                <p>
+                    Podemos recabar los siguientes datos personales cuando realizas un pedido para llevar, solicitas información o reservas un evento:
+                </p>
+                <ul class="list-disc pl-5 mb-4 space-y-2">
+                    <li>Nombre completo.</li>
+                    <li>Número de teléfono (fijo o móvil).</li>
+                    <li>Dirección de entrega (en caso de servicio a domicilio o pedidos para recoger).</li>
+                </ul>
+
+                <h3 class="text-2xl font-bold mt-8 mb-4">3. Finalidad del Tratamiento de Datos</h3>
+                <p>
+                    Tus datos personales serán utilizados para las siguientes finalidades necesarias para el servicio que solicitas:
+                </p>
+                <ul class="list-disc pl-5 mb-4 space-y-2">
+                    <li>Procesar y confirmar tus pedidos de alimentos y bebidas.</li>
+                    <li>Coordinar entregas o recolecciones de pedidos.</li>
+                    <li>Contactarte en caso de imprevistos con tu pedido.</li>
+                </ul>
+                <p>
+                    De manera secundaria, podríamos utilizar tu información para fines de calidad en el servicio o comunicarte promociones especiales (puedes oponerte a esto en cualquier momento).
+                </p>
+
+                <h3 class="text-2xl font-bold mt-8 mb-4">4. Transferencia de Datos</h3>
+                <p>
+                    Te informamos que tus datos personales no serán compartidos con terceros ajenos a nuestra operación, salvo que exista una obligación legal o para el cumplimiento de servicios de entrega a través de plataformas asociadas (cuando aplique).
+                </p>
+
+                <h3 class="text-2xl font-bold mt-8 mb-4">5. Derechos ARCO</h3>
+                <p>
+                    Tienes derecho a Acceder, Rectificar, Cancelar u Oponerte (ARCO) al tratamiento de tus datos personales. Para ejercer estos derechos, por favor contáctanos a través de:
+                </p>
+                <ul class="list-disc pl-5 mb-4 space-y-2">
+                    <li><strong>Correo electrónico:</strong> contacto@gabis.com.mx</li>
+                    <li><strong>WhatsApp:</strong> +52 56 6029 9028</li>
+                </ul>
+
+                <h3 class="text-2xl font-bold mt-8 mb-4">6. Cambios al Aviso de Privacidad</h3>
+                <p>
+                    Nos reservamos el derecho de efectuar modificaciones o actualizaciones a este aviso de privacidad en cualquier momento. Estas modificaciones estarán disponibles a través de nuestro sitio web.
+                </p>
+            </div>
+        </div>
+    </div>
+    <Footer />
+</Layout>

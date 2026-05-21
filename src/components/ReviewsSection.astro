@@ -1,0 +1,31 @@
+---
+import { InfiniteReviews } from "./InfiniteReviews.jsx";
+---
+
+<section
+    class="py-20 transition-colors duration-500 overflow-hidden"
+    style="background-color: var(--theme-bg); color: var(--theme-text);"
+>
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-12">
+            <h2
+                class="text-5xl md:text-6xl mb-4 transition-all duration-500"
+                style="font-family: var(--theme-font-title); color: var(--theme-accent);"
+            >
+                LO QUE DICEN DE NOSOTROS
+            </h2>
+            <p
+                class="text-lg max-w-2xl mx-auto transition-colors duration-500"
+                style="font-family: var(--font-body); opacity: 0.8;"
+            >
+                Nuestra comunidad es lo más importante. Gracias por hacernos
+                parte de sus días y sus noches.
+            </p>
+        </div>
+
+        {/* Infinite Moving Cards - Full width on mobile */}
+        <div class="w-screen -ml-4 md:ml-0 md:w-full relative">
+            <InfiniteReviews client:visible />
+        </div>
+    </div>
+</section>

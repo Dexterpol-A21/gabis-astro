@@ -1,0 +1,81 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Footer from "../components/Footer.astro";
+
+const lastUpdate = "Enero 2026";
+---
+
+<Layout title="Términos y Condiciones | Gabis" forceHeaderVisible={true}>
+    <div
+        class="min-h-screen transition-colors duration-500 bg-[var(--theme-bg)] text-[var(--theme-text)] font-satoshi pt-24 md:pt-32 pb-10 px-6"
+    >
+        <div class="max-w-4xl mx-auto mb-12">
+            <h1
+                class="text-4xl md:text-5xl mb-8 leading-none uppercase"
+                style="font-family: var(--theme-font-title); color: var(--theme-accent);"
+            >
+                Términos y Condiciones
+            </h1>
+
+            <div class="prose prose-lg prose-invert max-w-none opacity-90 text-[var(--theme-text)]">
+                <p class="mb-4">
+                    Última actualización: <strong>{lastUpdate}</strong>
+                </p>
+
+                <p class="mb-8">
+                    Bienvenido a <strong>Gabis</strong>. Al utilizar nuestros servicios, realizar pedidos o visitar nuestro establecimiento, aceptas cumplir con los siguientes términos y condiciones. Por favor, léelos detenidamente.
+                </p>
+
+                <h3 class="text-2xl font-bold mt-8 mb-4">1. Generalidades</h3>
+                <p>
+                    Gabis es un establecimiento de alimentos y bebidas con servicio de restaurante y para llevar. Nos reservamos el derecho de admisión y servicio en casos de comportamiento inapropiado o falta de respeto hacia nuestro personal u otros clientes.
+                </p>
+
+                <h3 class="text-2xl font-bold mt-8 mb-4">2. Horarios y Disponibilidad</h3>
+                <p>
+                    Nuestros horarios de operación se dividen en dos turnos:
+                </p>
+                <ul class="list-disc pl-5 mb-4 space-y-2">
+                    <li><strong>Turno Matutino (Birria):</strong> Todos los días de 7:00 AM a 4:00 PM.</li>
+                    <li><strong>Turno Nocturno (Snacks):</strong> Todos los días de 4:00 PM a 10:00 PM.</li>
+                </ul>
+                <p>
+                    Los productos están sujetos a disponibilidad hasta agotar existencias. Nos esforzamos por mantener nuestro inventario actualizado, pero en ocasiones de alta demanda, algunos platillos podrían no estar disponibles.
+                </p>
+
+                <h3 class="text-2xl font-bold mt-8 mb-4">3. Pedidos y Pagos</h3>
+                <ul class="list-disc pl-5 mb-4 space-y-2">
+                    <li><strong>Métodos de Pago:</strong> Aceptamos efectivo, transferencias bancarias y tarjetas de crédito/débito (Visa y Mastercard).</li>
+                    <li>Para pagos con tarjeta en servicio a domicilio o recoger, es necesario notificar con antelación si se requiere terminal.</li>
+                    <li>Todos los precios están en Pesos Mexicanos (MXN) e incluyen IVA.</li>
+                </ul>
+
+                <h3 class="text-2xl font-bold mt-8 mb-4">4. Servicio a Domicilio y Recolección</h3>
+                <p>
+                    <strong>Cobertura Limitada:</strong> Actualmente ofrecemos servicio a domicilio directo únicamente en un radio de 1 km alrededor de nuestro establecimiento.
+                </p>
+                <p>
+                    <strong>Tiempos de Entrega:</strong> Los tiempos proporcionados son estimaciones y pueden variar debido a la demanda, condiciones climáticas o tráfico.
+                </p>
+
+                <h3 class="text-2xl font-bold mt-8 mb-4">5. Cancelaciones y Devoluciones</h3>
+                <ul class="list-disc pl-5 mb-4 space-y-2">
+                    <li>Una vez que un pedido ha comenzado a prepararse, no podrá ser cancelado sin cargo.</li>
+                    <li>Si recibes un producto incorrecto o en mal estado, por favor contáctanos inmediatamente para ofrecerte una solución (reemplazo o reembolso parcial/total según aplique).</li>
+                    <li>Para eventos privados, se aplican las políticas de cancelación estipuladas en el contrato específico del evento.</li>
+                </ul>
+
+                <h3 class="text-2xl font-bold mt-8 mb-4">6. Alérgenos y Salud</h3>
+                <p>
+                    Nuestros alimentos pueden contener o haber estado en contacto con alérgenos comunes (gluten, lácteos, nueces, etc.). Si tienes alguna alergia o restricción alimentaria severa, es tu responsabilidad informarnos <strong>antes</strong> de realizar tu pedido. Gabis no se hace responsable por reacciones alérgicas no notificadas.
+                </p>
+
+                <h3 class="text-2xl font-bold mt-8 mb-4">7. Contacto</h3>
+                <p>
+                    Para cualquier duda, aclaración o comentario sobre estos términos, puedes escribirnos a <strong>contacto@gabis.com.mx</strong> o vía WhatsApp al número oficial.
+                </p>
+            </div>
+        </div>
+    </div>
+    <Footer />
+</Layout>

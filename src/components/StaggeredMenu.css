@@ -1,0 +1,387 @@
+.staggered-menu-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.staggered-menu-wrapper.fixed-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  overflow: hidden;
+}
+
+.staggered-menu-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* Border removed */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 2rem;
+  background: transparent;
+  pointer-events: none;
+  z-index: 9999;
+  /* Ultra high to be on top of everything */
+  transition: padding 0.3s ease;
+}
+
+/* Hide on mobile - MobileBottomNav handles navigation there */
+@media (max-width: 767px) {
+  .staggered-menu-header {
+    display: none !important;
+  }
+
+  .staggered-menu-wrapper {
+    display: none !important;
+  }
+}
+
+/* Optional: Add background on scroll if needed, but for now transparent as requested 'same items' */
+.staggered-menu-header.scrolled {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  padding: 1rem 2rem;
+}
+
+.staggered-menu-header>* {
+  pointer-events: auto;
+}
+
+.sm-logo {
+  display: flex;
+  align-items: center;
+  user-select: none;
+}
+
+.sm-logo-img {
+  display: block;
+  height: 32px;
+  width: auto;
+  object-fit: contain;
+}
+
+.sm-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(0, 0, 0, 0.5);
+  /* Semi-transparent background for visibility */
+  backdrop-filter: blur(4px);
+  padding: 8px 16px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  color: #F9F7F2;
+  /* Gabis White */
+  font-family: 'Satoshi-Variable', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  overflow: visible;
+  transition: background 0.3s;
+}
+
+.sm-toggle:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.sm-toggle:focus-visible {
+  outline: 2px solid #FDDA04;
+  outline-offset: 4px;
+}
+
+.sm-line:last-of-type {
+  margin-top: 6px;
+}
+
+.sm-toggle-textWrap {
+  position: relative;
+  display: inline-block;
+  height: 1em;
+  overflow: hidden;
+  white-space: nowrap;
+  width: var(--sm-toggle-width, auto);
+  min-width: var(--sm-toggle-width, auto);
+}
+
+.sm-toggle-textInner {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.sm-toggle-line {
+  display: block;
+  height: 1em;
+  line-height: 1;
+}
+
+.sm-icon {
+  position: relative;
+  width: 14px;
+  height: 14px;
+  flex: 0 0 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  will-change: transform;
+}
+
+.sm-panel-itemWrap {
+  position: relative;
+  overflow: hidden;
+  line-height: 1;
+}
+
+.sm-icon-line {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
+
+.sm-line {
+  display: none !important;
+}
+
+.staggered-menu-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: clamp(300px, 45vw, 600px);
+  height: 100%;
+  background: #141414;
+  /* Gabis Black */
+  border-left: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  padding: 8em 3em 3em 3em;
+  overflow-y: auto;
+  z-index: 110;
+  pointer-events: auto;
+  /* Start off-screen (Right by default) to prevent FOUC */
+  transform: translateX(100%);
+  will-change: transform;
+  /* Default transition for closing */
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Force open state - OVERRIDE GSAP */
+.staggered-menu-wrapper[data-open="true"] .staggered-menu-panel {
+  transform: translateX(0%) !important;
+  /* Delay panel entry slightly to let layers show first */
+  transition-delay: 0.25s;
+}
+
+/* --- CSS STRIPES ANIMATION --- */
+/* Ensure layers are positioned by CSS when open, overriding GSAP set() */
+.staggered-menu-wrapper[data-open="true"] .sm-prelayer {
+  transform: translateX(0%) !important;
+  transition: transform 0.6s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.staggered-menu-wrapper[data-open="true"] .sm-prelayer:nth-child(1) {
+  transition-delay: 0s;
+}
+
+.staggered-menu-wrapper[data-open="true"] .sm-prelayer:nth-child(2) {
+  transition-delay: 0.08s;
+}
+
+.staggered-menu-wrapper[data-open="true"] .sm-prelayer:nth-child(3) {
+  transition-delay: 0.16s;
+}
+
+[data-position='left'] .staggered-menu-panel {
+  right: auto;
+  left: 0;
+  border-left: none;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  /* Start off-screen (Left) */
+  transform: translateX(-100%);
+}
+
+.sm-prelayers {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: clamp(300px, 45vw, 600px);
+  pointer-events: none;
+  z-index: 105;
+}
+
+[data-position='left'] .sm-prelayers {
+  right: auto;
+  left: 0;
+}
+
+.sm-prelayer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  /* Start off-screen (Right by default) to prevent FOUC */
+  transform: translateX(100%);
+}
+
+[data-position='left'] .sm-prelayer {
+  /* Start off-screen (Left) */
+  transform: translateX(-100%);
+}
+
+.sm-panel-inner {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.sm-socials {
+  margin-top: auto;
+  padding-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sm-socials-title {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #FDDA04;
+  /* Gabis Gold */
+  font-family: 'Satoshi-Variable', sans-serif;
+}
+
+.sm-socials-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.sm-socials-link {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #F9F7F2;
+  text-decoration: none;
+  position: relative;
+  padding: 2px 0;
+  display: inline-block;
+  transition: color 0.3s ease, opacity 0.3s ease;
+  font-family: 'Satoshi-Variable', sans-serif;
+}
+
+.sm-socials-link:hover {
+  color: #FDDA04;
+  /* Gold on hover */
+}
+
+.sm-panel-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sm-panel-item {
+  position: relative;
+  color: #F9F7F2;
+  font-family: 'Stardom-Regular', sans-serif;
+  /* Gabis Morning Header Font */
+  font-weight: 400;
+  font-size: 3rem;
+  cursor: pointer;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+
+  transition: color 0.25s;
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 12px;
+  text-decoration: none;
+  padding-right: 0;
+  /* Reduced spacing strategy */
+}
+
+.sm-panel-item:hover {
+  color: #C01014;
+  /* Gabis Red on hover */
+}
+
+.sm-panel-item:hover .sm-panel-itemLabel {
+  /* Optional indent on hover */
+}
+
+.sm-panel-list[data-numbering] {
+  counter-reset: smItem;
+}
+
+.sm-panel-list[data-numbering] .sm-panel-item::after {
+  counter-increment: smItem;
+  content: counter(smItem, decimal-leading-zero);
+  position: relative;
+  /* Static flow in flex */
+  top: 0.1em;
+  /* Optical alignment */
+  right: auto;
+  font-size: 0.85rem;
+  /* Slightly smaller */
+  font-weight: 700;
+  font-family: var(--sm-num-font, 'Tanker-Regular');
+  /* Dynamic Font */
+  color: var(--sm-num-color, #FDDA04);
+  /* Dynamic Color */
+  letter-spacing: 0.05em;
+  pointer-events: none;
+  user-select: none;
+  opacity: var(--sm-num-opacity, 0);
+  transition: color 0.3s, font-family 0.3s;
+}
+
+@media (max-width: 1024px) {
+  .staggered-menu-panel {
+    width: 100%;
+    left: 0;
+    right: 0;
+    padding-top: 6em;
+  }
+}
+
+@media (max-width: 640px) {
+  .staggered-menu-panel {
+    width: 100%;
+    left: 0;
+    right: 0;
+  }
+
+  .sm-panel-item {
+    font-size: 2.5rem;
+  }
+}

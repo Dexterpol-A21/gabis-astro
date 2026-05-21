@@ -1,0 +1,109 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Footer from "../components/Footer.astro"; // Import Footer
+
+const mapSrc =
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14948.777083072382!2d-99.0664673!3d19.6231641!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1f3006520c2d5%3A0xcbaab4aeec6c7d2b!2sGabis!5e0!3m2!1ses-419!2smx!4v1769720021160!5m2!1ses-419!2smx";
+---
+
+<Layout title="Ubicación | Gabis" forceHeaderVisible={true}>
+    <div class="min-h-screen pt-0 md:pt-24 pb-0 md:pb-0 flex flex-col relative transition-colors duration-500 bg-[var(--theme-bg)] text-[var(--theme-text)]">
+        
+        <!-- Main Content Wrapper to fix footer positioning if needed -->
+        <div class="flex flex-col md:flex-row flex-grow border-t" style="border-color: var(--theme-border);">
+            <!-- Info Panel -->
+            <div
+                class="w-full md:w-1/3 p-8 md:p-12 flex flex-col justify-center overflow-y-auto order-1 md:order-1"
+                style="background-color: var(--theme-bg);"
+            >
+                <h1 
+                    class="text-6xl mb-2"
+                    style="font-family: var(--theme-font-title);"
+                >
+                    ECATEPEC
+                </h1>
+                <h2 
+                    class="text-3xl mb-8"
+                    style="font-family: var(--theme-font-title); color: var(--theme-accent);"
+                >
+                    GUADALUPE VICTORIA
+                </h2>
+
+                <div class="space-y-8 text-lg opacity-90 transition-colors">
+                    <div>
+                        <h3
+                            class="text-xl uppercase tracking-wider mb-2"
+                            style="font-family: var(--theme-font-title); color: var(--theme-accent);"
+                        >
+                            DIRECCIÓN EXACTA
+                        </h3>
+                        <p>
+                            De Los Trabajadores Casi Esquina Rafael Valdovinos S/N,
+                        </p>
+                        <p>Guadalupe Victoria, 55010 Ecatepec de Morelos, Méx.</p>
+                    </div>
+
+                    <div>
+                        <h3
+                            class="text-xl uppercase tracking-wider mb-2"
+                            style="font-family: var(--theme-font-title); color: var(--theme-accent);"
+                        >
+                            HORARIOS
+                        </h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <span class="block text-2xl" style="color: #C01014; font-family: 'Stardom', serif;">MAÑANA</span>
+                                <span class="block text-base mt-1 opacity-80">Todos los días</span>
+                                <span class="block text-base">7:00 AM - 4:00 PM</span>
+                            </div>
+                            <div>
+                                <span class="block text-2xl" style="color: #FE7102; font-family: 'Tanker', sans-serif; tracking-wide: 0.05em;">NOCHE</span>
+                                <span class="block text-base mt-1 opacity-80">Todos los días</span>
+                                <span class="block text-base">4:00 PM - 10:00 PM</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3
+                            class="text-xl uppercase tracking-wider mb-2"
+                            style="font-family: var(--theme-font-title); color: var(--theme-accent);"
+                        >
+                            CONTACTO
+                        </h3>
+                        <p>Tel: 56 6029 9028</p>
+                        <a href="mailto:contacto@gabis.com.mx" class="underline hover:text-[var(--theme-accent)] transition-colors"
+                            >contacto@gabis.com.mx</a
+                        >
+                    </div>
+
+                    <a
+                        href="https://www.google.com/maps/search/?api=1&query=Gabis+Birria+y+Alitas+Ecatepec"
+                        target="_blank"
+                        class="block w-full text-white text-center py-4 rounded-xl text-xl transition-transform hover:scale-[1.02] shadow-lg"
+                        style="background-color: var(--theme-text); color: var(--theme-bg); font-family: var(--theme-font-title);"
+                    >
+                        ABRIR EN GOOGLE MAPS
+                    </a>
+                </div>
+            </div>
+
+            <!-- Map Panel -->
+            <div class="w-full md:w-2/3 h-[50vh] md:h-auto bg-gray-200 order-2 md:order-2">
+                <iframe
+                    src={mapSrc}
+                    width="100%"
+                    height="100%"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                >
+                </iframe>
+            </div>
+        </div>
+
+        <!-- Inline Footer just for structure if needed, or global footer component -->
+    </div>
+    <Footer />
+</Layout>

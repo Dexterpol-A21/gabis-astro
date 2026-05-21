@@ -1,0 +1,97 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  type?: 'website' | 'article';
+}
+
+const { 
+  title, 
+  description = "Gabis: Tu Restaurante en Ecatepec y Coacalco. Disfruta de auténtica Birria y desayunos por la mañana, y deliciosas Cenas, Hamburguesas al carbón, Alitas y Snacks por la noche.", 
+  image = "/images/manana/nuestrahistoriabirria.png",
+  type = "website"
+} = Astro.props;
+
+const siteURL = Astro.site ? Astro.site.href : "https://gabis.com.mx";
+const canonicalURL = new URL(Astro.url.pathname, siteURL);
+
+// Structured Data (JSON-LD) for Local Business SEO
+const schema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Gabis",
+  "image": new URL(image, siteURL),
+  "url": siteURL,
+  "telephone": "+525660299028",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Rafael Valdovinos S/N, Guadalupe Victoria",
+    "addressLocality": "Ecatepec de Morelos",
+    "addressRegion": "Estado de México",
+    "postalCode": "55010",
+    "addressCountry": "MX"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 19.6231641,
+    "longitude": -99.0664673
+  },
+  "servesCuisine": ["Mexicana", "Americana", "Birria", "Hamburguesas", "Alitas", "Desayunos", "Cenas"],
+  "priceRange": "$$",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Thursday", "Friday", "Saturday", "Sunday"],
+      "opens": "07:00",
+      "closes": "16:00",
+      "description": "Restaurante de Desayunos y Birria"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Thursday", "Friday", "Saturday"],
+      "opens": "16:00",
+      "closes": "22:00",
+      "description": "Restaurante de Cenas, Hamburguesas y Snacks"
+    }
+  ],
+  "areaServed": ["Ecatepec", "Coacalco", "Guadalupe Victoria", "San Cristóbal", "Villa de las Flores"]
+});
+---
+
+<!-- Global Metadata -->
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<meta name="generator" content={Astro.generator} />
+
+<!-- Canonical URL -->
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Primary Meta Tags -->
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+<meta name="keywords" content="Restaurante, Gabis, Restaurante en Ecatepec, Restaurante en Coacalco, Birria, Hamburguesas, Cenas, Alitas, Desayunos, Para llevar, Pick up, Guadalupe Victoria" />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={Astro.url} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:site_name" content="Gabis Restaurante" />
+<meta property="og:locale" content="es_MX" />
+<meta property="og:image" content={new URL(image, siteURL)} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content={title} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={Astro.url} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={new URL(image, siteURL)} />
+<meta property="twitter:image:alt" content={title} />
+
+<!-- Schema.org JSON-LD -->
+<script type="application/ld+json" set:html={schema} />

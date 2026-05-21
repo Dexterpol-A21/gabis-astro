@@ -1,0 +1,122 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Footer from "../components/Footer.astro"; // Import Footer
+---
+
+<Layout title="Preguntas Frecuentes | Gabis" forceHeaderVisible={true}>
+    <div
+        class="min-h-screen transition-colors duration-500 bg-[var(--theme-bg)] text-[var(--theme-text)] font-satoshi pt-24 md:pt-32 pb-10 px-6"
+    >
+        <div class="max-w-3xl mx-auto mb-12">
+            <h1 class="text-5xl md:text-6xl mb-8" style="font-family: var(--theme-font-title); color: var(--theme-accent);">
+                PREGUNTAS<br />FRECUENTES
+            </h1>
+
+            <div class="space-y-12">
+                <!-- UBICACIÓN -->
+                <div>
+                    <h3
+                        class="text-3xl mb-4 flex items-center gap-3"
+                        style="font-family: var(--theme-font-title);"
+                    >
+                        <span style="color: var(--theme-accent);">01.</span> ¿DÓNDE SE ENCUENTRAN?
+                    </h3>
+                    <p class="text-lg leading-relaxed opacity-80">
+                        Estamos ubicados en <strong>Guadalupe Victoria, Ecatepec</strong> (55010). <br />
+                        <a 
+                            href="https://www.google.com/maps/search/?api=1&query=Gabis+Birria+y+Alitas+Ecatepec" 
+                            target="_blank" 
+                            class="underline decoration-2 underline-offset-2 hover:opacity-80 transition-opacity"
+                            style="color: var(--theme-accent);"
+                        >
+                            Ver ubicación en Google Maps
+                        </a>
+                    </p>
+                </div>
+
+                <!-- HORARIOS -->
+                <div>
+                    <h3
+                        class="text-3xl mb-4 flex items-center gap-3"
+                        style="font-family: var(--theme-font-title);"
+                    >
+                        <span style="color: var(--theme-accent);">02.</span> ¿CUÁLES SON SUS HORARIOS?
+                    </h3>
+                    <p class="text-lg leading-relaxed opacity-80">
+                        <strong>Mañanas (Todos los días):</strong> 7:00 AM - 4:00 PM.<br />
+                        <strong>Noches (Todos los días):</strong> 4:00 PM - 10:00 PM.
+                    </p>
+                </div>
+
+                <!-- PAGOS -->
+                <div>
+                    <h3
+                        class="text-3xl mb-4 flex items-center gap-3"
+                        style="font-family: var(--theme-font-title);"
+                    >
+                        <span style="color: var(--theme-accent);">03.</span> ¿ACEPTAN TARJETA?
+                    </h3>
+                    <p class="text-lg leading-relaxed opacity-80">
+                        ¡Sí! Aceptamos <strong>tarjetas (Visa/Mastercard), Transferencia y Efectivo</strong>. <br />
+                        Para envíos a domicilio, por favor avísanos que pagarás con tarjeta para enviar la terminal.
+                    </p>
+                </div>
+
+                <!-- MIXED MENU -->
+                <div>
+                    <h3
+                        class="text-3xl mb-4 flex items-center gap-3"
+                        style="font-family: var(--theme-font-title);"
+                    >
+                        <span style="color: var(--theme-accent);">04.</span> ¿PUEDO PEDIR BIRRIA EN LA NOCHE (O VICEVERSA)?
+                    </h3>
+                    <p class="text-lg leading-relaxed opacity-80">
+                        Por lo general, nuestras cocinas funcionan en horarios separados. <br />
+                        Sin embargo, <strong>podemos hacer excepciones si nos avisas con tiempo</strong> o realizas un pedido programado para eventos especiales.
+                    </p>
+                </div>
+
+                <!-- DELIVERY -->
+                <div>
+                    <h3
+                        class="text-3xl mb-4 flex items-center gap-3"
+                        style="font-family: var(--theme-font-title);"
+                    >
+                        <span style="color: var(--theme-accent);">05.</span> ¿TIENEN SERVICIO A DOMICILIO?
+                    </h3>
+                    <p class="text-lg leading-relaxed opacity-80">
+                        Por el momento <strong>solo realizamos entregas en un radio de 1 km</strong> (a pie). <br />
+                        Estamos trabajando para integrarnos pronto a plataformas como Didi Food. Mientras tanto, puedes 
+                        <a 
+                            href="https://wa.me/525660299028"
+                            target="_blank" 
+                            class="underline decoration-2 underline-offset-2 hover:opacity-80 transition-opacity font-bold"
+                            style="color: var(--theme-accent);"
+                        >
+                            hacer tu pedido por WhatsApp
+                        </a> 
+                        y pasar a recoger.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA SECTION -->
+        <div class="text-center pb-10 px-4">
+            <h2
+                class="text-4xl md:text-6xl mb-6 leading-none"
+                style="font-family: var(--theme-font-title);"
+            >
+                ¿Tienes otra duda?
+            </h2>
+            <a
+                href="https://wa.me/525660299028"
+                class="inline-block text-white text-xl md:text-2xl px-12 py-6 rounded-full hover:scale-105 transition-all shadow-xl"
+                style="font-family: var(--theme-font-title); background-color: var(--theme-accent); box-shadow: 0 0 30px var(--theme-accent-alpha, rgba(0,0,0,0.2));"
+            >
+                ESCRÍBENOS AL WHATSAPP
+            </a>
+        </div>
+    </div>
+    <Footer />
+</Layout>

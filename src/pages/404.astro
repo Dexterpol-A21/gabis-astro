@@ -1,0 +1,31 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="404 - Se quemó la cena | Gabis">
+    <div class="min-h-screen bg-noche flex flex-col items-center justify-center text-center px-4 text-white">
+        
+        <div class="font-tanker text-[12rem] leading-none opacity-20 select-none">
+            404
+        </div>
+        
+        <div class="relative z-10 -mt-20">
+            <h1 class="font-tanker text-6xl md:text-8xl mb-6 text-white drop-shadow-xl">
+                ¡UPS! SE NOS QUEMÓ<br/>LA HAMBURGUESA
+            </h1>
+            
+            <p class="text-xl md:text-2xl font-satoshi max-w-lg mx-auto mb-10 text-white/90">
+                Esta página no existe, pero el hambre sí.<br/>
+                Mejor regresa a lo seguro.
+            </p>
+
+            <a 
+                href="/" 
+                class="inline-block bg-white text-noche font-tanker text-2xl px-10 py-4 rounded-full hover:bg-black hover:text-white transition-colors duration-300"
+            >
+                VOLVER AL MENÚ
+            </a>
+        </div>
+
+    </div>
+</Layout>

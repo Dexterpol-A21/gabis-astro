@@ -1,0 +1,67 @@
+---
+trigger: model_decision
+description: when working on gabis website
+---
+
+{
+  "project_name": "Gabis Astro",
+  "design_system": {
+    "themes": {
+      "morning": {
+        "id": "morning",
+        "concept": "Tradición / Desayunos",
+        "colors": {
+          "primary": "#C01014", 
+          "primary_name": "Gabis Red / Birria",
+          "background": "#F9F7F2",
+          "background_name": "Harina / Cream",
+          "text_main": "#141414",
+          "accent": "#FDDA04"
+        },
+        "typography": {
+          "display_font": "Stardom",
+          "body_font": "Satoshi",
+          "style": "Serif, Elegant, Traditional"
+        },
+        "assets": {
+          "logo_color": "#C01014",
+          "icon_style": "Classic"
+        }
+      },
+      "night": {
+        "id": "night",
+        "concept": "Antojo / Cenas",
+        "colors": {
+          "primary": "#FE7102",
+          "primary_name": "Gabis Orange / Noche",
+          "background": "#141414",
+          "background_name": "Dark / Charcoal",
+          "text_main": "#F9F7F2",
+          "accent": "#FDDA04"
+        },
+        "typography": {
+          "display_font": "Tanker",
+          "body_font": "Satoshi",
+          "style": "Sans, Bold, Industrial, Wide"
+        },
+        "assets": {
+          "logo_color": "#FE7102",
+          "icon_style": "Neon / Vibrant"
+        }
+      }
+    },
+    "global_rules": {
+      "logo": "Must always include 'GABIS' text and the Icon. Icon color must adapt to the active theme.",
+      "buttons": {
+        "morning": "Ghost/Outline Red or Solid Red. Font: Stardom.",
+        "night": "Ghost/Outline Orange or Solid Orange. Font: Tanker.",
+        "switcher": "Pill shape, centered. Must reflect the active theme's font and color."
+      },
+      "donts": [
+        "Do NOT use Red for Night theme.",
+        "Do NOT use Stardom font for Night theme headers.",
+        "Do NOT use simple emojis for UI elements; use consistent SVG icons."
+      ]
+    }
+  }
+}

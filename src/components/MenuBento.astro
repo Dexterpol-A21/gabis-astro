@@ -1,0 +1,522 @@
+---
+import MenuSwitcher from './MenuSwitcher.jsx';
+import ZoomableGrid from './ZoomableGrid.jsx';
+import { menuData } from '../data/menu.js';
+import { getImage } from "astro:assets";
+
+// --- IMAGE OPTIMIZATION ---
+const imagesGlob = import.meta.glob('../assets/images/**/*.{png,jpg,jpeg,svg}', { import: "default", eager: true });
+const optimizedImages = {};
+
+await Promise.all(
+    Object.entries(imagesGlob).map(async ([path, image]) => {
+        const filename = path.split('/').pop();
+        const optimized = await getImage({
+            src: image,
+            format: 'avif',
+            quality: 80
+        });
+        optimizedImages[filename] = optimized.src;
+    })
+);
+
+// Helper to slugify (Must match the one in [slug].astro)
+const slugify = (text) => text.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
+
+// --- IMAGE MAPPING ---
+// Manually mapping "NoF" images to likely item names
+const imageMap = {
+    // MORNING
+    'plato de birria': '/images/manana/platoBirriaNoF.png',
+    'birriamen': '/images/manana/birriamenNoF.png',
+    'paquete familiar': '/images/manana/packBirria1NoF.png',
+    'tacos de birria': '/images/manana/ordentacobirriaNoF.png',
+    'quesabirria': '/images/manana/quesabirriasNoF.png',
+    'molletes': '/images/manana/molletesTodosNoF.png',
+    'sincronizada': '/images/manana/sinronizada1NoF.png',
+    'hotcakes tradicionales': '/images/manana/hotcakessencillosNoF.png',
+    'hotcakes especiales': '/images/manana/hotcakesEspecialesNoF.png',
+    'latte macchiato': '/images/manana/latteNoF.png',
+    'americano doble': '/images/manana/americanodobleNoF.png',
+    'cappuccino': '/images/manana/capuccinoNoF.png', 
+    'café americano': '/images/manana/cafeNoF.png',
+    'espresso': '/images/manana/dobleexpresoNoF.png',
+    'nescafé': '/images/manana/cafeNoF.png',
+    'combo nescafé + pan': '/images/manana/cafeminipanNoF.png',
+    'mini pan': '/images/manana/panNoF.png',
+    'flan casero': '/images/noche/flanNoF.png',
+    'refrescos': '/images/noche/cocaNoF.png',
+    'suero mineral': '/images/manana/sueromineralNoF.png',
+    'suero clamato': '/images/manana/sueroclamatoNoF.png',
+
+    // NIGHT
+    // Burgers
+    'sencilla': '/images/noche/hamburguesasencilaNoF.png',
+    'bacon': '/images/noche/hamburguesaNoF.png',
+    'hawaiana': '/images/noche/hamburguesahawaianaNoF.png',
+    'especial': '/images/noche/hamburguesaespecialNoF.png',
+    'sliders': '/images/noche/slidersNoF.png',
+    // Wings
+    'orden de alitas': '/images/noche/alitasNoF.png',
+    'alitas': '/images/noche/alitasNoF.png', // Fallback
+    'boneless': '/images/noche/bonelessNoF.png',
+    // Snacks
+    'papas bacon': '/images/noche/papasBaconNoF.png',
+    'orden papas francesas': '/images/noche/papasfrancesaNoF.png',
+    'salchipulpos': '/images/noche/salchipulpoplatoNoF.png',
+    // Hot Dogs
+    'jumbo clásico': '/images/noche/hotdogsencilloNoF.png',
+    'jumbo bacon': '/images/noche/hotdogbaconNoF.png',
+    // Dessert & Drinks
+    'flan napolitano': '/images/noche/flanNoF.png',
+    // Refrescos maps to existing 'refrescos' key (line 30)
+};
+
+// Fallback images
+const fallbackMorning = '/images/manana/consomeNoF.png';
+const fallbackNight = '/images/noche/hamburguesaNoF.png';
+
+const getImagePath = (itemName, theme) => {
+    const key = itemName.toLowerCase();
+    let path = null;
+    
+    // Try exact match
+    if (imageMap[key]) {
+        path = imageMap[key];
+    } else {
+         // Try partial match (ugly but works for now)
+        const found = Object.keys(imageMap).find(k => key.includes(k) || k.includes(key));
+        if (found) {
+            path = imageMap[found];
+        } else {
+            path = theme === 'morning' ? fallbackMorning : fallbackNight;
+        }
+    }
+
+    // Return optimized version if available
+    const filename = path.split('/').pop();
+    return optimizedImages[filename] || path;
+};
+
+// Flatten items 
+const morningItems = menuData.morning.categories.flatMap(cat => 
+    cat.items.map(item => ({ ...item, category: cat.name, themeName: 'manana', image: getImagePath(item.name, 'morning') }))
+);
+
+const nightItems = menuData.night.categories.flatMap(cat => 
+    cat.items.map(item => ({ ...item, category: cat.name, themeName: 'noche', image: getImagePath(item.name, 'night') }))
+);
+// Sizing Logic
+const getSizeClass = (itemName) => {
+    const name = itemName.toLowerCase();
+    
+    // HUGE (2x2) - The main stars (Only 1 per theme ideally)
+    // Morning: Paquete Familiar | Night: Hamburguesa Especial
+    if (name.includes('paquete familiar') || name === 'especial') {
+        return 'col-span-2 row-span-2';
+    }
+    
+    // WIDE (2x1) - Major Platters
+    // Morning: Birriamen, Combo, Hotcakes Especiales, Sueros
+    // Night: Sliders, Alitas, Boneless, Papas Bacon, Sueros
+    if (name.includes('birriamen') || name.includes('alitas') || name.includes('boneless') || name.includes('sliders') || name.includes('combo') || name.includes('papas bacon') || name.includes('hotcakes especiales') || name.includes('suero')) {
+        return 'col-span-2 row-span-1';
+    }
+
+    // TALL (1x2) - Vertical Fillers
+    if (name.includes('plato de birria') || name.includes('tacos') || name.includes('sincronizada')) {
+         return 'col-span-1 row-span-2';
+    }
+
+    // STANDARD (1x1) - EVERYTHING ELSE
+    return 'col-span-1 row-span-1';
+};
+
+const getSizeImageClass = (spanClass) => {
+    if (spanClass.includes('col-span-2 row-span-2')) return 'w-64 h-64 -mr-8 -mb-8'; 
+    if (spanClass.includes('col-span-2 row-span-1')) return 'w-48 h-48 -mr-6 -mb-10';
+    if (spanClass.includes('col-span-1 row-span-2')) return 'w-full h-auto -mr-4 mb-4 scale-110'; // Optimized for Tall
+    return 'w-36 h-36 -mr-6 -mb-6';
+};
+---
+
+<section id="menu-bento" class="relative w-full py-0 md:py-24 border-t-4 border-[#FDDA04] transition-colors duration-500 overflow-hidden" style="background-color: var(--theme-bg);">
+    
+    <!-- Background Decor -->
+    <div class="absolute inset-0 opacity-[0.03] pointer-events-none" 
+         style="background-image: radial-gradient(#000 1px, transparent 1px); background-size: 32px 32px;">
+    </div>
+
+    <div class="max-w-7xl mx-auto px-0.5 pb-0.5 md:px-4 md:pb-0 relative z-10 w-full">
+    
+    <!-- Zoomable container for mobile -->
+    <div class="bento-zoomable-container">
+    
+    <!-- MORNING GRID -->
+    <div class="theme-grid morning-grid hidden opacity-0 transition-opacity duration-500">
+        <div class="text-center mb-8 pt-8">
+            <span class="font-bold text-gabis-black tracking-widest text-sm uppercase block mb-2">Empieza el día</span>
+            <h2 class="font-stardom text-6xl md:text-8xl text-gabis-red leading-none">DESAYUNOS & BIRRIA</h2>
+        </div>
+        
+        <div class="grid grid-cols-4 auto-rows-[240px] gap-6 grid-flow-dense">
+            {morningItems.map((item) => {
+                const spanClass = getSizeClass(item.name);
+                const imageClass = getSizeImageClass(spanClass);
+
+                return (
+                    <a 
+                        href={`/menu/${item.themeName}/${slugify(item.category)}/${slugify(item.name)}`}
+                        class={`group relative overflow-hidden rounded-[2rem] bg-white hover:bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-black/5 ${spanClass}`}
+                    >
+                        {/* Background Decor */}
+                        <div class="absolute top-0 right-0 w-full h-full bg-gradient-to-br from-transparent to-[#F5F5F0] opacity-50"></div>
+
+                        <div class="flex flex-col h-full p-6 relative z-10">
+                            <!-- Header -->
+                            <div class="flex justify-between items-start mb-2 opacity-100 transition-opacity">
+                                <span class="inline-block px-3 py-1 rounded-full text-[10px] font-black tracking-widest uppercase shadow-sm transform -rotate-1" style="background-color: #FDDA04; color: #141414;">
+                                    ✦ {item.category}
+                                </span>
+                            </div>
+                            
+                            <!-- Title & Price -->
+                            <div class="mb-auto">
+                                <h3 class={`font-stardom text-gabis-red leading-none mb-1 ${spanClass.includes('col-span-2') ? 'text-4xl md:text-5xl' : 'text-2xl'}`}>
+                                    {item.name}
+                                </h3>
+                                <p class="font-satoshi font-bold text-gray-800">{item.price}</p>
+                            </div>
+
+                            <!-- Image -->
+                            <div class={`absolute bottom-0 right-0 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3 ${imageClass}`}>
+                                <img 
+                                    src={item.image} 
+                                    class="w-full h-full object-contain drop-shadow-md"
+                                    alt={item.name}
+                                    style={`view-transition-name: image-${slugify(item.name)}`}                                    loading="lazy"
+                                    decoding="async"                                />
+                            </div>
+                        </div>
+                    </a>
+                )
+            })}
+        </div>
+    </div>
+
+    <!-- NIGHT GRID -->
+    <div class="theme-grid night-grid hidden opacity-0 transition-opacity duration-500">
+        <div class="text-center mb-8 pt-8">
+            <span class="font-bold text-white tracking-widest text-sm uppercase block mb-2 opacity-80">Cae la noche</span>
+            <h2 class="font-tanker text-6xl md:text-8xl text-gabis-orange leading-none drop-shadow-[0_0_10px_rgba(254,113,2,0.5)]">CENAS & SNACKS</h2>
+        </div>
+
+        <div class="grid grid-cols-4 auto-rows-[240px] gap-6 grid-flow-dense">
+             {nightItems.map((item) => {
+                const spanClass = getSizeClass(item.name);
+                const imageClass = getSizeImageClass(spanClass);
+
+                return (
+                    <a 
+                        href={`/menu/${item.themeName}/${slugify(item.category)}/${slugify(item.name)}`}
+                        class={`group relative overflow-hidden rounded-[2rem] bg-[#1a1a1a] hover:bg-[#252525] border border-white/5 hover:border-gabis-orange/50 hover:shadow-[0_0_30px_rgba(254,113,2,0.15)] hover:-translate-y-1 transition-all duration-300 ${spanClass}`}
+                    >
+                         {/* Background Decor */}
+                         <div class="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-black/80 to-transparent"></div>
+
+                        <div class="flex flex-col h-full p-6 relative z-10">
+                             <!-- Header -->
+                            <div class="flex justify-between items-start mb-2">
+                                <span class="inline-block px-3 py-1 rounded-full text-[10px] font-black tracking-widest uppercase shadow-sm transform -rotate-1" style="background-color: #FDDA04; color: #141414;">
+                                    ✦ {item.category}
+                                </span>
+                            </div>
+
+                             <!-- Title & Price -->
+                             <div class="relative z-20">
+                                <h3 class={`font-tanker text-white leading-none mb-1 ${spanClass.includes('col-span-2') ? 'text-4xl md:text-5xl' : 'text-3xl'}`}>
+                                    {item.name}
+                                </h3>
+                                <p class="font-satoshi text-gabis-orange text-xl font-bold opacity-100 drop-shadow-md">{item.price}</p>
+                            </div>
+
+                             <!-- Image -->
+                            <div class={`absolute bottom-0 right-0 transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-3 ${imageClass}`}>
+                                <img 
+                                    src={item.image} 
+                                    class="w-full h-full object-contain drop-shadow-2xl"
+                                    alt={item.name}
+                                    style={`view-transition-name: image-${slugify(item.name)}`}                                    loading="lazy"
+                                    decoding="async"                                />
+                            </div>
+                        </div>
+                    </a>
+                )
+            })}
+        </div>
+    </div>
+    </div> <!-- Close bento-zoomable-container -->
+    </div> <!-- Close max-w-7xl -->
+</section>
+
+<style>
+    /* Mobile zoom styles - Map concept */
+    @media (max-width: 767px) {
+        .bento-zoomable-container {
+            touch-action: pan-x pan-y pinch-zoom;
+            overflow: hidden;
+            -webkit-overflow-scrolling: touch;
+            position: relative;
+            width: 100%;
+        }
+        
+        .bento-zoomable-container .theme-grid {
+            min-width: 900px;
+            width: 900px;
+            transform-origin: top left;
+            transition: transform 0.1s ease-out;
+        }
+    }
+    
+    @media (min-width: 768px) {
+        .bento-zoomable-container {
+            overflow: visible;
+        }
+    }
+</style>
+
+<script>
+    // Use a named function for the event handler to allow removal if needed (advanced)
+    // But for now, we'll encapsulate everything in a setup function that runs on every page load.
+    
+    document.addEventListener('astro:page-load', () => {
+        const updateBento = () => {
+            const isDark = document.documentElement.classList.contains('dark');
+            const morningGrid = document.querySelector('.morning-grid');
+            const nightGrid = document.querySelector('.night-grid');
+            
+            if (isDark) {
+                morningGrid?.classList.add('hidden', 'opacity-0');
+                morningGrid?.classList.remove('flex'); // Just in case
+                
+                nightGrid?.classList.remove('hidden');
+                setTimeout(() => nightGrid?.classList.remove('opacity-0'), 50);
+            } else {
+                nightGrid?.classList.add('hidden', 'opacity-0');
+                
+                morningGrid?.classList.remove('hidden');
+                setTimeout(() => morningGrid?.classList.remove('opacity-0'), 50);
+            }
+        };
+
+        // Run immediately to set initial state
+        updateBento();
+
+        // Listen for theme changes for the DURATION of this page view
+        // Note: This adds a listener. Ideally we should remove it on page unload, 
+        // but 'theme-change' likely fires rarely. 
+        // To be cleaner, we can check if we've already attached logic, but checking the specific element existence is improved.
+        window.addEventListener('theme-change', updateBento);
+        
+        const observer = new MutationObserver(updateBento);
+        observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+        
+        // --- Mobile Map-style Pinch Zoom & Pan (Corrected) ---
+        if (window.innerWidth < 768) {
+            const container = document.querySelector('.bento-zoomable-container');
+            const grids = container?.querySelectorAll('.theme-grid');
+            
+            // Initial Setup
+            const containerWidth = container?.clientWidth || window.innerWidth;
+            const gridWidth = 900;
+            const initialScale = containerWidth / gridWidth;
+            
+            // State
+            let scale = initialScale;
+            let translateX = 0;
+            let translateY = 0;
+            
+            // Helpers for multi-touch
+            let lastDist = 0;
+            let lastCenter = { x: 0, y: 0 };
+            let isDragging = false;
+            let startPan = { x: 0, y: 0 }; // Start Finger Pos
+            let startTranslate = { x: 0, y: 0 }; // Start Grid Pos
+
+            // Function to get the current visible grid and its height
+            const getGridDimensions = () => {
+                let activeGrid = container.querySelector('.morning-grid:not(.hidden)');
+                if (!activeGrid) activeGrid = container.querySelector('.night-grid');
+                if (!activeGrid) activeGrid = grids ? grids[0] : null;
+
+                // Default fallback if loading or something
+                return {
+                    width: 900,
+                    height: activeGrid ? activeGrid.offsetHeight : 1800
+                };
+            };
+
+            // Get distance between two touches
+            const getDist = (t1, t2) => Math.hypot(t1.clientX - t2.clientX, t1.clientY - t2.clientY);
+
+            // Get center between two touches
+            const getCenter = (t1, t2) => ({
+                x: (t1.clientX + t2.clientX) / 2,
+                y: (t1.clientY + t2.clientY) / 2
+            });
+
+            // Get relative position in container (accounting for container offset if any)
+            const getRelativePos = (clientX, clientY) => {
+                const rect = container.getBoundingClientRect();
+                return {
+                    x: clientX - rect.left,
+                    y: clientY - rect.top
+                };
+            };
+
+            const updateTransform = () => {
+                const dims = getGridDimensions();
+                const gridWidth = dims.width;
+                const gridHeight = dims.height;
+
+                const currentViewW = container.clientWidth || window.innerWidth;
+                const currentViewH = container.clientHeight;
+
+                // Constraints
+                const maxScale = 1.6;
+                const minScale = currentViewW / gridWidth; 
+                
+                // Clamp Scale
+                if (scale < minScale) scale = minScale;
+                if (scale > maxScale) scale = maxScale;
+
+                const scaledWidth = gridWidth * scale;
+                const scaledHeight = gridHeight * scale;
+                
+                // Set Container Height to the Initial 'Fit' height (Fixed Window)
+                const initialHeight = gridHeight * minScale;
+                container.style.height = `${initialHeight}px`;
+
+                // Recalculate viewH/W after height update (though W shouldn't change, H might)
+                // Actually we just set height.
+                const winH = initialHeight; // This is our viewport height
+
+                // Calculate Bounds
+                // minX = viewW - scaledWidth
+                const minX = currentViewW - scaledWidth; 
+                const maxX = 0;
+                
+                const minY = winH - scaledHeight;
+                const maxY = 0;
+
+                // Clamp Translation
+                if (translateX > maxX) translateX = maxX;
+                if (translateX < minX) translateX = minX;
+                
+                if (translateY > maxY) translateY = maxY;
+                if (translateY < minY) translateY = minY;
+                
+                grids?.forEach(grid => {
+                    grid.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+                });
+            };
+
+            // Initialize
+            updateTransform();
+
+            container?.addEventListener('touchstart', (e) => {
+                if (e.touches.length === 2) {
+                    e.preventDefault(); // Prevent native browser zoom
+                    isDragging = false;
+                    lastDist = getDist(e.touches[0], e.touches[1]);
+                    lastCenter = getCenter(e.touches[0], e.touches[1]);
+                } else if (e.touches.length === 1) {
+                    // Pan start
+                    // Only prevent default if we are zoomed in > initialScale?
+                    // Or if we want to override native scroll.
+                    // Let's try NOT preventing default for single touch unless it's horizontal?
+                    // It's safer to just handle 2-finger interaction for Zoom/Pan combo
+                    // and let 1-finger handle browser scroll (or basic pan if zoomed).
+                    
+                    // For now, let's enable 1-finger pan if zoomed in
+                    if (scale > initialScale + 0.05) {
+                         // e.preventDefault(); // Interfere with scroll?
+                         isDragging = true;
+                         startPan = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+                         startTranslate = { x: translateX, y: translateY };
+                    }
+                }
+            }, { passive: false });
+
+            container?.addEventListener('touchmove', (e) => {
+                if (e.touches.length === 2) {
+                    e.preventDefault();
+                    
+                    // 1. Calculate new scale
+                    const currDist = getDist(e.touches[0], e.touches[1]);
+                    const distDelta = currDist / lastDist;
+                    const newScale = scale * distDelta;
+                    
+                    // 2. Calculate Pinch Center (Screen Coords)
+                    const currCenter = getCenter(e.touches[0], e.touches[1]);
+                    
+                    // 3. Adjust Translate to keep Focus stationary
+                    // Formula: NewTranslate = Center - (Center - OldTranslate) * (NewScale / OldScale)
+                    // But we also have Center moving (Panning while pinching).
+                    // Simple incremental approach:
+                    // P_grid = (Center - Translate) / Scale
+                    // NewTranslate = Center - P_grid * NewScale
+                    
+                    // Relative Center in Container
+                    const rc = getRelativePos(currCenter.x, currCenter.y);
+                    
+                    // Math
+                    const oldTx = translateX;
+                    const oldTy = translateY;
+                    const s = scale;
+                    
+                    // Point on grid under finger
+                    const Pgx = (rc.x - oldTx) / s;
+                    const Pgy = (rc.y - oldTy) / s;
+                    
+                    // Update Scale
+                    scale = newScale;
+                    
+                    // Clamp Scale logic happens in updateTransform, but we need raw value here
+                    // Let's apply clamp here to be safe
+                    // (Simplified for now - relying on visual clamp later or exact math)
+                    
+                    // New Translate
+                    translateX = rc.x - (Pgx * scale);
+                    translateY = rc.y - (Pgy * scale);
+                    
+                    lastDist = currDist;
+                    lastCenter = currCenter;
+                    
+                    updateTransform();
+                } else if (e.touches.length === 1 && isDragging) {
+                     // Pan logic
+                     if (scale > initialScale + 0.05) {
+                         e.preventDefault(); // Block scroll while panning
+                         const dx = e.touches[0].clientX - startPan.x;
+                         const dy = e.touches[0].clientY - startPan.y;
+                         
+                         translateX = startTranslate.x + dx;
+                         translateY = startTranslate.y + dy;
+                         
+                         updateTransform();
+                     }
+                }
+            }, { passive: false });
+            
+            container?.addEventListener('touchend', () => {
+                isDragging = false;
+            });
+            
+             container?.addEventListener('touchcancel', () => {
+                isDragging = false;
+            });
+        }
+    });
+</script>
+

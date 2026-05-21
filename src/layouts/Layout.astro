@@ -1,0 +1,172 @@
+---
+import StaggeredMenu from "../components/StaggeredMenu.jsx";
+import MobileBottomNav from "../components/MobileBottomNav.jsx";
+import { ViewTransitions } from "astro:transitions";
+import SEOHead from "../components/SEOHead.astro";
+
+interface Props {
+    title: string;
+    description?: string;
+    image?: string;
+    hideNavMenu?: boolean;
+    forceHeaderVisible?: boolean;
+}
+
+const {
+    title,
+    description = "Gabis - Birria por la mañana, Hamburguesas por la tarde",
+    image,
+    hideNavMenu = false,
+    forceHeaderVisible = false,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content={description} />
+        <meta name="viewport" content="width=device-width" />
+        
+        <!-- Favicons (Dynamic Day/Night) -->
+        <link id="favicon" rel="icon" type="image/svg+xml" href="/images/manana/favicongabisManana/favicon.svg" />
+        <link id="favicon-ico" rel="icon" sizes="any" href="/images/manana/favicongabisManana/favicon.ico" />
+        <link id="apple-touch-icon" rel="apple-touch-icon" href="/images/manana/favicongabisManana/apple-touch-icon.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+
+        <!-- Fontshare -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+        <link
+            href="https://api.fontshare.com/v2/css?f[]=tanker@400&f[]=stardom@400&f[]=satoshi@300,400,500,700,900&display=swap"
+            rel="stylesheet"
+        />
+
+        <SEOHead title={title} description={description} image={image} />
+        <ViewTransitions />
+    </head>
+    <body class="font-satoshi bg-gabis-gray text-gabis-black md:pb-0">
+        {
+            !hideNavMenu && (
+                <>
+                    {/* Desktop: StaggeredMenu (hidden on mobile) */}
+                    <div class="hidden md:block">
+                        <StaggeredMenu
+                            client:load
+                            forceVisible={forceHeaderVisible}
+                        />
+                    </div>
+                    {/* Mobile: Bottom Nav */}
+                    <MobileBottomNav client:load />
+                </>
+            )
+        }
+        <slot />
+    </body>
+</html>
+
+<script>
+    // Global Theme Listener
+    if (typeof window !== "undefined") {
+        const updateFavicons = (isNight) => {
+             const folder = isNight ? 'noche/favicongabisNoche' : 'manana/favicongabisManana';
+             const setHref = (id, file) => {
+                const el = document.getElementById(id);
+                if (el) el.setAttribute('href', `/images/${folder}/${file}`);
+             };
+             setHref('favicon', 'favicon.svg');
+             setHref('favicon-ico', 'favicon.ico');
+             setHref('apple-touch-icon', 'apple-touch-icon.png');
+        };
+
+        const handleTheme = (e) => {
+            const mode = e.detail?.mode || "morning";
+            const isNight = mode === "night";
+
+            if (isNight) {
+                document.documentElement.classList.add("dark");
+            } else {
+                document.documentElement.classList.remove("dark");
+            }
+            updateFavicons(isNight);
+        };
+        window.addEventListener("theme-change", handleTheme);
+        
+        // Initial check mechanism if needed by ViewTransitions
+        document.addEventListener('astro:after-swap', () => {
+            const isDark = document.documentElement.classList.contains('dark');
+            updateFavicons(isDark);
+        });
+    }
+</script>
+
+<style is:global>
+    :root {
+        --color-birria: #c01014;
+        --color-noche: #fe7102;
+        --color-gold: #fdda04;
+        --color-black: #141414;
+        --color-bg: #f9f7f2;
+
+        --font-manana: "Stardom", serif;
+        --font-noche: "Tanker", sans-serif;
+        --font-body: "Satoshi", sans-serif;
+
+        /* Dynamic Theme Variables */
+        --theme-bg: var(--color-bg);
+        --theme-text: var(--color-black);
+        --theme-accent: var(--color-birria);
+        --theme-font-title: var(--font-manana);
+        --theme-font-scale: 1;
+        --theme-card-bg: #fafafa; /* Gray-50ish */
+        --theme-border: rgba(0, 0, 0, 0.1);
+    }
+
+    html.dark {
+        --theme-bg: var(--color-black);
+        --theme-text: #ffffff;
+        --theme-accent: var(--color-noche);
+        --theme-font-title: var(--font-noche);
+        --theme-font-scale: 1.1;
+        --theme-card-bg: #1a1a1a;
+        --theme-border: rgba(255, 255, 255, 0.1);
+    }
+    html {
+        scroll-behavior: smooth;
+    }
+
+    /* FORCE TITLES TO USE THEME FONT */
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: var(--theme-font-title);
+    }
+
+    @media print {
+        body * {
+            visibility: hidden;
+        }
+        #printable-menu,
+        #printable-menu * {
+            visibility: visible;
+        }
+        #printable-menu {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            background-color: white !important;
+            color: black !important;
+        }
+        /* Hide toggle buttons in print mode */
+        #printable-menu button {
+            display: none !important;
+        }
+    }
+</style>

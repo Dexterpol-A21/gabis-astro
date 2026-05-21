@@ -1,0 +1,167 @@
+---
+---
+
+<section id="menu-completo" class="py-16 bg-stone-100 relative">
+  <!-- Decorative background elements -->
+  <div class="absolute top-0 right-0 w-64 h-64 bg-gabis-yellow/10 rounded-full blur-3xl rounded-bl-full pointer-events-none"></div>
+
+  <div class="container mx-auto px-4 relative z-10">
+    <div class="text-center mb-12">
+      <h2 class="font-stardom text-4xl md:text-5xl text-gabis-brown mb-4">Nuestro Menú</h2>
+      <p class="font-satoshi text-gray-600">Todo lo que necesitas para ser feliz, en un solo lugar.</p>
+    </div>
+
+    <!-- Tabs Navigation -->
+    <div class="flex flex-wrap justify-center gap-4 mb-12">
+      <button class="menu-tab-btn active px-6 py-2 rounded-full font-tanker font-bold text-lg transition-all" data-target="morning">
+        ☀️ Mañanas (Birria)
+      </button>
+      <button class="menu-tab-btn px-6 py-2 rounded-full font-tanker font-bold text-lg transition-all" data-target="afternoon">
+        🌙 Tardes (Snacks)
+      </button>
+      <button class="menu-tab-btn px-6 py-2 rounded-full font-tanker font-bold text-lg transition-all" data-target="drinks">
+        🥤 Bebidas
+      </button>
+    </div>
+
+    <!-- Menus Container -->
+    <div class="min-h-[400px]">
+      
+      <!-- Morning Menu -->
+      <div id="morning" class="menu-content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in">
+        <!-- Item 1 -->
+        <article class="bg-white p-5 rounded-xl shadow-sm border-l-4 border-gabis-orange hover:shadow-md transition-shadow">
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="font-tanker text-xl font-bold text-gabis-black">Orden de Birria</h3>
+            <span class="font-tanker text-2xl text-gabis-orange">$120</span>
+          </div>
+          <p class="text-sm text-gray-500 font-satoshi">Plato generoso de birria con su consomé, cebolla, cilantro y tortillas.</p>
+        </article>
+        <!-- Item 2 -->
+        <article class="bg-white p-5 rounded-xl shadow-sm border-l-4 border-gabis-orange hover:shadow-md transition-shadow">
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="font-tanker text-xl font-bold text-gabis-black">Quesabirria</h3>
+            <span class="font-tanker text-2xl text-gabis-orange">$45</span>
+          </div>
+          <p class="text-sm text-gray-500 font-satoshi">Tortilla grande de harina, queso derretido y mucha carne.</p>
+        </article>
+        <!-- Item 3 -->
+        <article class="bg-white p-5 rounded-xl shadow-sm border-l-4 border-gabis-orange hover:shadow-md transition-shadow">
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="font-tanker text-xl font-bold text-gabis-black">Consomé (Chico)</h3>
+            <span class="font-tanker text-2xl text-gabis-orange">$25</span>
+          </div>
+          <p class="text-sm text-gray-500 font-satoshi">Ideal para acompañar tus tacos.</p>
+        </article>
+         <!-- Item 4 -->
+         <article class="bg-white p-5 rounded-xl shadow-sm border-l-4 border-gabis-orange hover:shadow-md transition-shadow">
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="font-tanker text-xl font-bold text-gabis-black">Taco Dorado</h3>
+            <span class="font-tanker text-2xl text-gabis-orange">$35</span>
+          </div>
+          <p class="text-sm text-gray-500 font-satoshi">Crujiente, con carne y queso.</p>
+        </article>
+      </div>
+
+      <!-- Afternoon Menu -->
+      <div id="afternoon" class="menu-content hidden grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in">
+        <article class="bg-white p-5 rounded-xl shadow-sm border-l-4 border-gabis-red hover:shadow-md transition-shadow">
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="font-tanker text-xl font-bold text-gabis-black">Hamburguesa Clásica</h3>
+            <span class="font-tanker text-2xl text-gabis-red">$95</span>
+          </div>
+          <p class="text-sm text-gray-500 font-satoshi">Carne de res, queso americano, lechuga y tomate.</p>
+        </article>
+         <article class="bg-white p-5 rounded-xl shadow-sm border-l-4 border-gabis-red hover:shadow-md transition-shadow">
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="font-tanker text-xl font-bold text-gabis-black">Alitas (10 pzas)</h3>
+            <span class="font-tanker text-2xl text-gabis-red">$140</span>
+          </div>
+          <p class="text-sm text-gray-500 font-satoshi">Elige tu salsa: BBQ, Buffalo, Mango Habanero.</p>
+        </article>
+         <article class="bg-white p-5 rounded-xl shadow-sm border-l-4 border-gabis-red hover:shadow-md transition-shadow">
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="font-tanker text-xl font-bold text-gabis-black">Boneless (Order)</h3>
+            <span class="font-tanker text-2xl text-gabis-red">$120</span>
+          </div>
+          <p class="text-sm text-gray-500 font-satoshi">Trozo de pechuga empanizada, bañados en salsa.</p>
+        </article>
+      </div>
+
+       <!-- Drinks Menu -->
+       <div id="drinks" class="menu-content hidden grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in">
+        <article class="bg-white p-5 rounded-xl shadow-sm border-l-4 border-gabis-black hover:shadow-md transition-shadow">
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="font-tanker text-xl font-bold text-gabis-black">Refrescos</h3>
+            <span class="font-tanker text-2xl text-gabis-black">$25</span>
+          </div>
+          <p class="text-sm text-gray-500 font-satoshi">Coca-Cola, Sprite, Fanta (Lata 355ml).</p>
+        </article>
+         <article class="bg-white p-5 rounded-xl shadow-sm border-l-4 border-gabis-black hover:shadow-md transition-shadow">
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="font-tanker text-xl font-bold text-gabis-black">Aguas Frescas</h3>
+            <span class="font-tanker text-2xl text-gabis-black">$30</span>
+          </div>
+          <p class="text-sm text-gray-500 font-satoshi">Jamaica, Horchata, Limón (Litro).</p>
+        </article>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Active Tab State */
+  .menu-tab-btn.active {
+    background-color: #111111; /* gabis-black */
+    color: #FFB703; /* gabis-yellow */
+    transform: scale(1.05);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Inactive Tab State */
+  .menu-tab-btn:not(.active) {
+    background-color: white;
+    color: #111111;
+    border: 2px solid #E5E7EB;
+  }
+  .menu-tab-btn:not(.active):hover {
+    border-color: #FFB703;
+    color: #FFB703;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in {
+    animation: fadeIn 0.4s ease-out forwards;
+  }
+</style>
+
+<script>
+  // Simple Tab Logic
+  const btns = document.querySelectorAll('.menu-tab-btn');
+  const contents = document.querySelectorAll('.menu-content');
+
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetId = btn.getAttribute('data-target');
+      
+      // Update Buttons
+      btns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      // Update Content
+      contents.forEach(c => {
+        if(c.id === targetId) {
+          c.classList.remove('hidden');
+          c.classList.add('grid');
+        } else {
+          c.classList.add('hidden');
+          c.classList.remove('grid');
+        }
+      });
+    });
+  });
+</script>
