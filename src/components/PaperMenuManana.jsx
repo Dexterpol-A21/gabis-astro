@@ -137,69 +137,69 @@ export const PaperMenuManana = () => {
                 }}>
 
                     {/* === FOOD DECORATIONS (Coming from edges) === */}
-                    <img src="/images/manana/latteNoF.png" alt="" style={{
+                    <img src="/images/manana/latteNoF.webp" alt="" style={{
                         position: 'absolute', top: '-55px', left: '-55px', width: '130px',
                         transform: 'rotate(15deg)', opacity: 0.9, zIndex: 20
                     }} />
-                    <img src="/images/manana/panNoF.png" alt="" style={{
+                    <img src="/images/manana/panNoF.webp" alt="" style={{
                         position: 'absolute', top: '15px', left: '80px', width: '120px',
                         transform: 'rotate(-12deg)', opacity: 0.95, zIndex: 10
                     }} />
-                    <img src="/images/manana/cafeNoF.png" alt="" style={{
+                    <img src="/images/manana/cafeNoF.webp" alt="" style={{
                         position: 'absolute', top: '100px', left: '-50px', width: '110px',
                         transform: 'rotate(180deg)', opacity: 0.85, zIndex: 10
                     }} />
-                    <img src="/images/manana/platoBirriaNoF.png" alt="" style={{
+                    <img src="/images/manana/platoBirriaNoF.webp" alt="" style={{
                         position: 'absolute', top: '-80px', left: '50%', width: '280px',
                         transform: 'translateX(-50%)', opacity: 0.9
                     }} />
-                    <img src="/images/manana/quesabirriasNoF.png" alt="" style={{
+                    <img src="/images/manana/quesabirriasNoF.webp" alt="" style={{
                         position: 'absolute', top: '-50px', right: '-70px', width: '220px',
                         transform: 'rotate(-35deg)', opacity: 0.9
                     }} />
-                    <img src="/images/manana/birriamenNoF.png" alt="" style={{
+                    <img src="/images/manana/birriamenNoF.webp" alt="" style={{
                         position: 'absolute', bottom: '-70px', left: '-60px', width: '250px',
                         transform: 'rotate(10deg)', opacity: 0.9
                     }} />
-                    <img src="/images/manana/tacobirriaNoF.png" alt="" style={{
+                    <img src="/images/manana/tacobirriaNoF.webp" alt="" style={{
                         position: 'absolute', bottom: '-100px', left: '50%', width: '340px',
                         transform: 'translateX(-50%)', opacity: 0.95
                     }} />
-                    <img src="/images/manana/consomeNoF.png" alt="" style={{
+                    <img src="/images/manana/consomeNoF.webp" alt="" style={{
                         position: 'absolute', bottom: '-50px', right: '-50px', width: '200px',
                         transform: 'rotate(-15deg)', opacity: 0.9
                     }} />
 
                     {/* === SCATTERED CHILES (On edges) === */}
-                    <img src="/images/manana/guajilloNoF.png" alt="" style={{
+                    <img src="/images/manana/guajilloNoF.webp" alt="" style={{
                         position: 'absolute', top: '320px', left: '15px', width: '45px',
                         transform: 'rotate(60deg)', opacity: 0.7
                     }} />
-                    <img src="/images/manana/anchoNoF.png" alt="" style={{
+                    <img src="/images/manana/anchoNoF.webp" alt="" style={{
                         position: 'absolute', bottom: '280px', left: '25px', width: '40px',
                         transform: 'rotate(-20deg)', opacity: 0.6
                     }} />
-                    <img src="/images/manana/moritaNoF.png" alt="" style={{
+                    <img src="/images/manana/moritaNoF.webp" alt="" style={{
                         position: 'absolute', top: '180px', right: '30px', width: '35px',
                         transform: 'rotate(12deg)', opacity: 0.7
                     }} />
-                    <img src="/images/manana/guajilloNoF.png" alt="" style={{
+                    <img src="/images/manana/guajilloNoF.webp" alt="" style={{
                         position: 'absolute', top: '320px', right: '20px', width: '50px',
                         transform: 'rotate(-45deg)', opacity: 0.6
                     }} />
-                    <img src="/images/manana/moritaNoF.png" alt="" style={{
+                    <img src="/images/manana/moritaNoF.webp" alt="" style={{
                         position: 'absolute', bottom: '300px', right: '35px', width: '30px',
                         transform: 'rotate(-60deg)', opacity: 0.5
                     }} />
-                    <img src="/images/manana/anchoNoF.png" alt="" style={{
+                    <img src="/images/manana/anchoNoF.webp" alt="" style={{
                         position: 'absolute', bottom: '220px', right: '15px', width: '45px',
                         transform: 'rotate(30deg)', opacity: 0.6
                     }} />
-                    <img src="/images/manana/unLimon2NoF.png" alt="" style={{
+                    <img src="/images/manana/unLimon2NoF.webp" alt="" style={{
                         position: 'absolute', top: '250px', right: '60px', width: '30px',
                         transform: 'rotate(20deg)', opacity: 0.5
                     }} />
-                    <img src="/images/manana/unLimonNoF.png" alt="" style={{
+                    <img src="/images/manana/unLimonNoF.webp" alt="" style={{
                         position: 'absolute', bottom: '350px', left: '50px', width: '25px',
                         transform: 'rotate(-15deg)', opacity: 0.5
                     }} />
@@ -263,90 +263,81 @@ export const PaperMenuManana = () => {
             <div className="page" style={{ ...pageStyle, backgroundColor: '#F9F7F2' }}>
                 <div style={{ position: 'relative', height: '100%', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
 
-                    <div style={{ paddingTop: '60px', textAlign: 'center', marginBottom: '50px' }}>
-                        <h2 style={{ fontFamily: 'Stardom, serif', color: '#C01014', fontSize: '42px', marginBottom: '12px' }}>
+                    <div style={{ paddingTop: '45px', textAlign: 'center', marginBottom: '30px' }}>
+                        <h2 style={{ fontFamily: 'Stardom, serif', color: '#C01014', fontSize: '42px', marginBottom: '10px' }}>
                             Caldos y Ramen
                         </h2>
                         <div style={{ width: '80px', height: '4px', backgroundColor: '#FDDA04', margin: '0 auto', borderRadius: '2px' }}></div>
                     </div>
 
-                    <div style={{ padding: '0 50px 60px 50px', flex: 1 }}>
-                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px', marginBottom: '30px' }}>
-                            {/* Plato de Birria - UPDATED PRICE: $130 */}
+                    <div style={{ padding: '0 50px 30px 50px', flex: 1, display: 'flex', flexDirection: 'column' }}>
+                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '16px' }}>
+                            {/* Plato de Birria */}
                             <div style={{ textAlign: 'center' }}>
                                 <img
-                                    src="/images/manana/platoBirriaNoF.png"
+                                    src="/images/manana/platoBirriaNoF.webp"
                                     alt="Plato de Birria"
-                                    style={{ width: '190px', display: 'block', margin: '0 auto 12px', filter: 'drop-shadow(0 6px 15px rgba(0,0,0,0.12))' }}
+                                    style={{ width: '190px', display: 'block', margin: '0 auto 8px', filter: 'drop-shadow(0 6px 15px rgba(0,0,0,0.12))' }}
                                 />
-                                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'baseline', gap: '8px', marginBottom: '8px' }}>
-                                    <span style={{ fontFamily: 'Stardom, serif', color: '#141414', fontSize: '24px' }}>Plato de Birria</span>
-                                    <span style={{ fontFamily: 'Stardom, serif', color: '#C01014', fontSize: '24px' }}>$130</span>
+                                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'baseline', gap: '8px', marginBottom: '4px' }}>
+                                    <span style={{ fontFamily: 'Stardom, serif', color: '#141414', fontSize: '22px' }}>Plato de Birria</span>
+                                    <span style={{ fontFamily: 'Stardom, serif', color: '#C01014', fontSize: '22px' }}>$140</span>
                                 </div>
-                                <p style={{ fontSize: '13px', color: 'rgba(20, 20, 20, 0.6)', marginBottom: '16px', lineHeight: 1.4 }}>
-                                    La especialidad de la casa. Carne suavecita con su consomé tradicional, cilantro, cebolla y tortillas.
+                                <p style={{ fontSize: '12px', color: 'rgba(20, 20, 20, 0.6)', marginBottom: '8px', lineHeight: 1.3 }}>
+                                    La especialidad de la casa. Carne de res cocida a fuego lento en consomé especiado, servida con cilantro, cebolla y tortillas calientes.
                                 </p>
                             </div>
 
-                            {/* Birriamen - UPDATED PRICE: $145 */}
+                            {/* Birriamen */}
                             <div style={{ textAlign: 'center' }}>
                                 <img
-                                    src="/images/manana/birriamenNoF.png"
+                                    src="/images/manana/birriamenNoF.webp"
                                     alt="Birriamen"
-                                    style={{ width: '190px', display: 'block', margin: '0 auto 12px', filter: 'drop-shadow(0 6px 15px rgba(0,0,0,0.12))' }}
+                                    style={{ width: '190px', display: 'block', margin: '0 auto 8px', filter: 'drop-shadow(0 6px 15px rgba(0,0,0,0.12))' }}
                                 />
-                                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'baseline', gap: '8px', marginBottom: '8px' }}>
-                                    <span style={{ fontFamily: 'Stardom, serif', color: '#141414', fontSize: '24px' }}>Birriamen</span>
-                                    <span style={{ fontFamily: 'Stardom, serif', color: '#C01014', fontSize: '24px' }}>$145</span>
+                                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'baseline', gap: '8px', marginBottom: '4px' }}>
+                                    <span style={{ fontFamily: 'Stardom, serif', color: '#141414', fontSize: '22px' }}>Birriamen</span>
+                                    <span style={{ fontFamily: 'Stardom, serif', color: '#C01014', fontSize: '22px' }}>$155</span>
                                 </div>
-                                <p style={{ fontSize: '13px', color: 'rgba(20, 20, 20, 0.6)', marginBottom: '16px', lineHeight: 1.4 }}>
-                                    La fusión favorita: Fideos estilo ramen preparados con el sabor único de nuestra birria de res.
+                                <p style={{ fontSize: '12px', color: 'rgba(20, 20, 20, 0.6)', marginBottom: '8px', lineHeight: 1.3 }}>
+                                    Fideos estilo ramen bañados en nuestro consomé de birria. Una fusión caldosa, intensa y reconfortante.
                                 </p>
                             </div>
                         </div>
 
-                        <div style={{ borderTop: '2px solid #FDDA04', margin: '40px 0' }}></div>
+                        <div style={{ borderTop: '2px solid #FDDA04', margin: '16px 0' }}></div>
 
-                        {/* Paquete Familiar - PRICE SAME: $750 */}
-                        <div style={{ marginBottom: '40px' }}>
-                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '12px' }}>
+                        {/* Paquetes Familiares - ambos con mismo estilo */}
+                        <div style={{ marginBottom: '10px' }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '6px' }}>
                                 <h3 style={{ fontFamily: 'Stardom, serif', color: '#C01014', fontSize: '24px', margin: 0 }}>
                                     Paquete Familiar (1kg)
                                 </h3>
-                                <span style={{ fontFamily: 'Stardom, serif', color: '#C01014', fontSize: '28px' }}>$750</span>
+                                <span style={{ fontFamily: 'Stardom, serif', color: '#C01014', fontSize: '26px' }}>$760</span>
                             </div>
-                            <p style={{ fontSize: '14px', color: 'rgba(20, 20, 20, 0.7)', marginBottom: '16px', lineHeight: 1.6 }}>
-                                Todo listo para compartir. Comparte el sabor tradicional con toda tu familia.
+                            <p style={{ fontSize: '13px', color: 'rgba(20, 20, 20, 0.7)', marginBottom: '14px', lineHeight: 1.4 }}>
+                                Todo listo para compartir en casa. 1kg de birria, 2L de consomé, 1kg de tortillas, verdura fresca y salsas.
                             </p>
-                            <div style={{
-                                display: 'grid',
-                                gridTemplateColumns: '1fr 1fr',
-                                gap: '8px 20px',
-                                marginBottom: '20px',
-                                fontSize: '13px',
-                                color: 'rgba(20,20,20,0.7)'
-                            }}>
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                                    <span style={{ color: '#C01014', fontSize: '12px' }}>◆</span>
-                                    <span>1kg de Birria</span>
-                                </div>
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                                    <span style={{ color: '#C01014', fontSize: '12px' }}>◆</span>
-                                    <span>2 Litros de consomé</span>
-                                </div>
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                                    <span style={{ color: '#C01014', fontSize: '12px' }}>◆</span>
-                                    <span>1kg de tortillas</span>
-                                </div>
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                                    <span style={{ color: '#C01014', fontSize: '12px' }}>◆</span>
-                                    <span>Verdura y salsas</span>
-                                </div>
+                        </div>
+
+                        <div style={{ marginBottom: '12px' }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '6px' }}>
+                                <h3 style={{ fontFamily: 'Stardom, serif', color: '#C01014', fontSize: '24px', margin: 0 }}>
+                                    Medio Paquete Familiar
+                                </h3>
+                                <span style={{ fontFamily: 'Stardom, serif', color: '#C01014', fontSize: '26px' }}>$400</span>
                             </div>
+                            <p style={{ fontSize: '13px', color: 'rgba(20, 20, 20, 0.7)', lineHeight: 1.4 }}>
+                                La mitad perfecta para compartir sin quedarte corto. 500g de birria, 1L de consomé, 500g de tortillas, verdura y salsas.
+                            </p>
+                        </div>
+
+                        {/* Imagen centrada en el espacio restante */}
+                        <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                             <img
-                                src="/images/manana/packBirria1NoF.png"
+                                src="/images/manana/packBirria1NoF.webp"
                                 alt="Paquete Familiar"
-                                style={{ width: '100%', display: 'block', margin: '-30px auto 0', filter: 'drop-shadow(0 6px 15px rgba(0,0,0,0.1))' }}
+                                style={{ width: '100%', maxWidth: '600px', display: 'block', filter: 'drop-shadow(0 6px 15px rgba(0,0,0,0.1))' }}
                             />
                         </div>
                     </div>
@@ -357,11 +348,11 @@ export const PaperMenuManana = () => {
                     </div>
 
 
-                    <img src="/images/manana/guajilloNoF.png" alt="" style={{
+                    <img src="/images/manana/guajilloNoF.webp" alt="" style={{
                         position: 'absolute', top: '200px', left: '20px', width: '35px',
                         transform: 'rotate(45deg)', opacity: 0.4
                     }} />
-                    <img src="/images/manana/moritaNoF.png" alt="" style={{
+                    <img src="/images/manana/moritaNoF.webp" alt="" style={{
                         position: 'absolute', top: '280px', right: '30px', width: '30px',
                         transform: 'rotate(-30deg)', opacity: 0.4
                     }} />
@@ -372,126 +363,147 @@ export const PaperMenuManana = () => {
             <div className="page" style={{ ...pageStyle, backgroundColor: '#F9F7F2' }}>
                 <div style={{ position: 'relative', height: '100%', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
 
-                    <div style={{ paddingTop: '40px', textAlign: 'center', marginBottom: '20px' }}>
-                        <h2 style={{ fontFamily: 'Stardom, serif', color: '#C01014', fontSize: '60px', marginBottom: '10px' }}>
+                    <div style={{ paddingTop: '36px', textAlign: 'center', marginBottom: '14px' }}>
+                        <h2 style={{ fontFamily: 'Stardom, serif', color: '#C01014', fontSize: '44px', marginBottom: '10px' }}>
                             Quesabirrias y Tacos
                         </h2>
-                        <div style={{ width: '120px', height: '6px', backgroundColor: '#FDDA04', margin: '0 auto 15px', borderRadius: '3px' }}></div>
-
-                        <div style={{
-                            display: 'inline-block',
-                            backgroundColor: '#FDDA04',
-                            color: '#C01014',
-                            fontFamily: 'Stardom, serif',
-                            fontSize: '18px',
-                            padding: '6px 20px',
-                            borderRadius: '20px'
-                        }}>
-                            ¡Incluye Consomé!
-                        </div>
+                        <div style={{ width: '100px', height: '5px', backgroundColor: '#FDDA04', margin: '0 auto', borderRadius: '3px' }}></div>
                     </div>
 
-                    <div style={{ padding: '0 40px 100px 40px', flex: 1, display: 'flex', flexDirection: 'column' }}>
+                    <div style={{ padding: '0 40px 70px 40px', flex: 1, display: 'flex', flexDirection: 'column' }}>
 
-                        <div style={{ display: 'flex', gap: '16px', marginBottom: '16px', alignItems: 'center' }}>
-                            {/* Orden de Tacos - UPDATED PRICE: $90 */}
-                            <div style={{ flex: '1.2', textAlign: 'center', position: 'relative' }}>
-                                <img
-                                    src="/images/manana/ordentacobirriaNoF.png"
-                                    alt="Orden de Tacos"
-                                    style={{ width: '100%', maxWidth: '240px', display: 'block', margin: '8px auto 8px', filter: 'drop-shadow(0 6px 15px rgba(0,0,0,0.12))' }}
-                                />
-                                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'baseline', gap: '10px' }}>
-                                    <span style={{ fontFamily: 'Stardom, serif', color: '#141414', fontSize: '28px' }}>Orden de Tacos</span>
-                                    <span style={{ fontFamily: 'Stardom, serif', color: '#C01014', fontSize: '28px' }}>$90</span>
-                                </div>
-                                <p style={{ fontSize: '14px', color: 'rgba(20, 20, 20, 0.7)', lineHeight: 1.4, padding: '0 10px' }}>
-                                    Tres tacos bien servidos con todo el sabor tradicional.
-                                </p>
-                            </div>
-
-                            <div style={{ flex: '0.8', display: 'flex', flexDirection: 'column', gap: '24px', justifyContent: 'center' }}>
-                                {/* Quesabirrias - UPDATED PRICE: $50 */}
+                        <div style={{ display: 'flex', gap: '20px', marginBottom: '10px' }}>
+                            {/* COLUMNA IZQUIERDA: Orden de Tacos + Taco de Birria */}
+                            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '14px' }}>
+                                {/* Orden de Tacos */}
                                 <div style={{ textAlign: 'center' }}>
                                     <img
-                                        src="/images/manana/quesabirriasNoF.png"
-                                        alt="Quesabirrias"
-                                        style={{ width: '100%', maxWidth: '150px', display: 'block', margin: '0 auto 5px' }}
+                                        src="/images/manana/ordentacobirriaNoF.webp"
+                                        alt="Orden de Tacos"
+                                        style={{ width: '100%', maxWidth: '180px', display: 'block', margin: '4px auto 4px', filter: 'drop-shadow(0 6px 15px rgba(0,0,0,0.12))' }}
                                     />
-                                    <div style={{ marginBottom: '4px' }}>
-                                        <span style={{ fontFamily: 'Stardom, serif', color: '#141414', fontSize: '22px', display: 'block', lineHeight: 1 }}>Quesabirria</span>
-                                        <span style={{ fontFamily: 'Stardom, serif', color: '#C01014', fontSize: '22px' }}>$50</span>
+                                    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'baseline', gap: '8px' }}>
+                                        <span style={{ fontFamily: 'Stardom, serif', color: '#141414', fontSize: '22px' }}>Orden de Tacos (3 pzas)</span>
+                                        <span style={{ fontFamily: 'Stardom, serif', color: '#C01014', fontSize: '22px' }}>$92</span>
                                     </div>
                                     <p style={{ fontSize: '12px', color: 'rgba(20, 20, 20, 0.7)', lineHeight: 1.3 }}>
-                                        Tortilla doradita, queso fundido y carne de birria.
+                                        Tortilla dorada al comal, rellena de birria. Sencillo o en orden de 3. Incluye consomé.
                                     </p>
                                 </div>
 
-                                {/* Taco de Birria - UPDATED PRICE: $35 */}
+                                {/* Taco de Birria */}
+                                <div style={{ textAlign: 'center', borderTop: '1px dashed rgba(253,218,4,0.3)', paddingTop: '10px' }}>
+                                    <img
+                                        src="/images/manana/tacosolounoNoF.webp"
+                                        alt="Taco de Birria"
+                                        style={{ width: '100%', maxWidth: '180px', display: 'block', margin: '0 auto 4px' }}
+                                    />
+                                    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'baseline', gap: '8px' }}>
+                                        <span style={{ fontFamily: 'Stardom, serif', color: '#141414', fontSize: '22px' }}>Taco de Birria</span>
+                                        <span style={{ fontFamily: 'Stardom, serif', color: '#C01014', fontSize: '22px' }}>$36</span>
+                                    </div>
+                                    <p style={{ fontSize: '12px', color: 'rgba(20, 20, 20, 0.7)', lineHeight: 1.2 }}>
+                                        Sencillo y jugoso. Incluye consomé.
+                                    </p>
+                                </div>
+                            </div>
+
+                            {/* COLUMNA DERECHA: Orden Quesabirrias + Quesabirria */}
+                            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '14px' }}>
+                                {/* Orden Quesabirrias (2pz) */}
                                 <div style={{ textAlign: 'center' }}>
                                     <img
-                                        src="/images/manana/tacosolounoNoF.png"
-                                        alt="Taco de Birria"
-                                        style={{ width: '100%', maxWidth: '140px', display: 'block', margin: '0 auto 5px' }}
+                                        src="/images/manana/quesabirriasordenNoF.webp"
+                                        alt="Orden Quesabirrias"
+                                        style={{ width: '100%', maxWidth: '180px', display: 'block', margin: '0 auto 4px' }}
                                     />
-                                    <div style={{ marginBottom: '4px' }}>
-                                        <span style={{ fontFamily: 'Stardom, serif', color: '#141414', fontSize: '22px', display: 'block', lineHeight: 1 }}>Taco de Birria</span>
-                                        <span style={{ fontFamily: 'Stardom, serif', color: '#C01014', fontSize: '22px' }}>$35</span>
+                                    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'baseline', gap: '8px' }}>
+                                        <span style={{ fontFamily: 'Stardom, serif', color: '#141414', fontSize: '22px' }}>Orden Quesabirrias (2pz)</span>
+                                        <span style={{ fontFamily: 'Stardom, serif', color: '#C01014', fontSize: '22px' }}>$100</span>
                                     </div>
                                     <p style={{ fontSize: '12px', color: 'rgba(20, 20, 20, 0.7)', lineHeight: 1.3 }}>
-                                        Sencillo, jugoso y con buen sazón.
+                                        Dos quesabirrias bien servidas, doble queso, doble birria, doble consomé.
+                                    </p>
+                                </div>
+
+                                {/* Quesabirria */}
+                                <div style={{ textAlign: 'center', borderTop: '1px dashed rgba(253,218,4,0.3)', paddingTop: '10px' }}>
+                                    <img
+                                        src="/images/manana/quesabirriaNoF.webp"
+                                        alt="Quesabirria"
+                                        style={{ width: '100%', maxWidth: '180px', display: 'block', margin: '0 auto 4px' }}
+                                    />
+                                    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'baseline', gap: '8px' }}>
+                                        <span style={{ fontFamily: 'Stardom, serif', color: '#141414', fontSize: '22px' }}>Quesabirria</span>
+                                        <span style={{ fontFamily: 'Stardom, serif', color: '#C01014', fontSize: '22px' }}>$55</span>
+                                    </div>
+                                    <p style={{ fontSize: '12px', color: 'rgba(20, 20, 20, 0.7)', lineHeight: 1.2 }}>
+                                        Queso fundido y birria en tortilla crujiente. Incluye consomé.
                                     </p>
                                 </div>
                             </div>
                         </div>
 
-                        {/* NEW: MOLLETES & SINCRONIZADAS (moved from Page 4) - WITH IMAGES */}
+                        <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                            <div style={{
+                                display: 'inline-block',
+                                backgroundColor: '#FDDA04',
+                                color: '#C01014',
+                                fontFamily: 'Stardom, serif',
+                                fontSize: '18px',
+                                padding: '6px 28px',
+                                borderRadius: '20px',
+                                letterSpacing: '0.03em'
+                            }}>
+                                ¡TODOS INCLUYEN CONSOMÉ!
+                            </div>
+                        </div>
+
+                        {/* MOLLETES & SINCRONIZADAS */}
                         <div style={{
-                            marginTop: 'auto',
-                            marginBottom: '10px',
+                            marginBottom: '8px',
                             backgroundColor: 'rgba(253, 218, 4, 0.08)',
-                            borderRadius: '12px',
-                            padding: '16px',
+                            borderRadius: '10px',
+                            padding: '12px',
                             border: 'none'
                         }}>
-                            <h3 style={{ fontFamily: 'Stardom, serif', color: '#C01014', fontSize: '28px', marginBottom: '14px', textAlign: 'center' }}>
+                            <h3 style={{ fontFamily: 'Stardom, serif', color: '#C01014', fontSize: '24px', marginBottom: '10px', textAlign: 'center' }}>
                                 ALMUERZOS Y ANTOJOS
                             </h3>
-                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
                                 {/* MOLLETES */}
                                 <div style={{ textAlign: 'center' }}>
                                     <img
-                                        src="/images/manana/molletesTodosNoF.png"
+                                        src="/images/manana/molletesTodosNoF.webp"
                                         alt="Molletes"
-                                        style={{ width: '100%', maxWidth: '145px', display: 'block', margin: '0 auto 10px' }}
+                                        style={{ width: '100%', maxWidth: '130px', display: 'block', margin: '0 auto 6px' }}
                                     />
-                                    <div style={{ marginBottom: '4px' }}>
-                                        <span style={{ fontFamily: 'Stardom, serif', color: '#141414', fontSize: '20px', display: 'block', lineHeight: 1.1 }}>Molletes (Orden 3)</span>
-                                        <span style={{ fontFamily: 'Stardom, serif', color: '#C01014', fontSize: '22px' }}>$110</span>
+                                    <div style={{ marginBottom: '2px' }}>
+                                        <span style={{ fontFamily: 'Stardom, serif', color: '#141414', fontSize: '18px', display: 'block', lineHeight: 1.1 }}>Molletes (Orden 3)</span>
+                                        <span style={{ fontFamily: 'Stardom, serif', color: '#C01014', fontSize: '20px' }}>$115</span>
                                     </div>
-                                    <p style={{ fontSize: '12px', color: 'rgba(20, 20, 20, 0.7)', lineHeight: 1.3 }}>
-                                        Tostadito con frijoles y queso, a elegir:<br />
-                                        Birria <span style={{ color: '#C01014' }}>•</span> Tocino <span style={{ color: '#C01014' }}>•</span> Sencillos
+                                    <p style={{ fontSize: '11px', color: 'rgba(20, 20, 20, 0.7)', lineHeight: 1.2 }}>
+                                        Pan tostado con frijoles y queso gratinado. Elige: Birria, Tocino o Sencillos.
                                     </p>
                                 </div>
 
                                 {/* SINCRONIZADAS */}
                                 <div style={{ textAlign: 'center' }}>
                                     <img
-                                        src="/images/manana/sinronizada1NoF.png"
+                                        src="/images/manana/sinronizada1NoF.webp"
                                         alt="Sincronizada"
-                                        style={{ width: '100%', maxWidth: '145px', display: 'block', margin: '0 auto 10px' }}
+                                        style={{ width: '100%', maxWidth: '130px', display: 'block', margin: '0 auto 6px' }}
                                     />
-                                    <div style={{ marginBottom: '4px' }}>
-                                        <span style={{ fontFamily: 'Stardom, serif', color: '#141414', fontSize: '20px', display: 'block', lineHeight: 1.1, marginBottom: '4px' }}>Sincronizada Individual</span>
-                                        <div style={{ display: 'flex', justifyContent: 'center', gap: '12px', fontSize: '14px' }}>
-                                            <span style={{ fontFamily: 'Stardom, serif', color: '#141414' }}>2pz <span style={{ color: '#C01014', fontSize: '22px' }}>$85</span></span>
+                                    <div style={{ marginBottom: '2px' }}>
+                                        <span style={{ fontFamily: 'Stardom, serif', color: '#141414', fontSize: '18px', display: 'block', lineHeight: 1.1, marginBottom: '2px' }}>Sincronizada Individual</span>
+                                        <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', fontSize: '13px' }}>
+                                            <span style={{ fontFamily: 'Stardom, serif', color: '#141414' }}>2pz <span style={{ color: '#C01014', fontSize: '20px' }}>$85</span></span>
                                             <span style={{ color: 'rgba(20, 20, 20, 0.4)' }}>•</span>
-                                            <span style={{ fontFamily: 'Stardom, serif', color: '#141414' }}>1pz <span style={{ color: '#C01014', fontSize: '20px' }}>$45</span></span>
+                                            <span style={{ fontFamily: 'Stardom, serif', color: '#141414' }}>1pz <span style={{ color: '#C01014', fontSize: '18px' }}>$45</span></span>
                                         </div>
                                     </div>
-                                    <p style={{ fontSize: '12px', color: 'rgba(20, 20, 20, 0.7)', lineHeight: 1.3 }}>
-                                        Tortilla de harina con jamón y queso derretido.
+                                    <p style={{ fontSize: '11px', color: 'rgba(20, 20, 20, 0.7)', lineHeight: 1.2 }}>
+                                        Tortilla de harina con jamón y queso, dorada al comal.
                                     </p>
                                 </div>
                             </div>
@@ -502,11 +514,11 @@ export const PaperMenuManana = () => {
                         <PageFooterA4 subtitle="TACOS, QUESABIRRIAS Y ALMUERZOS" />
                     </div>
 
-                    <img src="/images/manana/anchoNoF.png" alt="" style={{
+                    <img src="/images/manana/anchoNoF.webp" alt="" style={{
                         position: 'absolute', top: '200px', left: '25px', width: '35px',
                         transform: 'rotate(20deg)', opacity: 0.4, pointerEvents: 'none'
                     }} />
-                    <img src="/images/manana/unLimon2NoF.png" alt="" style={{
+                    <img src="/images/manana/unLimon2NoF.webp" alt="" style={{
                         position: 'absolute', top: '300px', right: '30px', width: '25px',
                         transform: 'rotate(-25deg)', opacity: 0.4, pointerEvents: 'none'
                     }} />
@@ -518,16 +530,17 @@ export const PaperMenuManana = () => {
                 <div style={{ position: 'relative', height: '100%', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
 
                     <div style={{ paddingTop: '60px', textAlign: 'center', marginBottom: '30px' }}>
-                        <h2 style={{ fontFamily: 'Stardom, serif', color: '#C01014', fontSize: '42px', marginBottom: '12px' }}>
+                        <h2 style={{ fontFamily: 'Stardom, serif', color: '#C01014', fontSize: '42px', marginBottom: '10px' }}>
                             Hotcakes y Cafetería
                         </h2>
                         <div style={{ width: '80px', height: '4px', backgroundColor: '#FDDA04', margin: '0 auto', borderRadius: '2px' }}></div>
                     </div>
 
-                    <div style={{ padding: '0 50px 120px 50px', flex: 1 }}>
+                    <div style={{ padding: '0 50px 130px 50px', flex: 1 }}>
 
-                        {/* HOTCAKES Section - WITH IMAGES */}
+                        {/* HOTCAKES Section */}
                         <div style={{ marginBottom: '20px' }}>
+
                             <div style={{
                                 display: 'grid',
                                 gridTemplateColumns: '1fr 1fr',
@@ -536,33 +549,32 @@ export const PaperMenuManana = () => {
                                 {/* HOTCAKES TRADICIONALES */}
                                 <div style={{ textAlign: 'center' }}>
                                     <img
-                                        src="/images/manana/hotcakessencillosNoF.png"
+                                        src="/images/manana/hotcakessencillosNoF.webp"
                                         alt="Hotcakes Tradicionales"
                                         style={{ width: '100%', maxWidth: '140px', display: 'block', margin: '0 auto 8px', filter: 'drop-shadow(0 4px 10px rgba(0,0,0,0.1))' }}
                                     />
                                     <div style={{ marginBottom: '4px' }}>
                                         <span style={{ fontFamily: 'Stardom, serif', color: '#141414', fontSize: '18px', display: 'block', lineHeight: 1.1 }}>Hotcakes Tradicionales (3 pzas)</span>
-                                        <span style={{ fontFamily: 'Stardom, serif', color: '#C01014', fontSize: '20px' }}>$65</span>
+                                        <span style={{ fontFamily: 'Stardom, serif', color: '#C01014', fontSize: '20px' }}>$75</span>
                                     </div>
                                     <p style={{ fontSize: '12px', color: 'rgba(20, 20, 20, 0.7)', lineHeight: 1.3 }}>
-                                        Esponjosos. Servidos con mantequilla y miel.
+                                        3 piezas esponjosas hechas al momento. Servidas calientes con mantequilla y miel. El desayuno dulce que nunca falla.
                                     </p>
                                 </div>
 
                                 {/* HOTCAKES ESPECIALES */}
                                 <div style={{ textAlign: 'center' }}>
                                     <img
-                                        src="/images/manana/hotcakesEspecialesNoF.png"
+                                        src="/images/manana/hotcakesEspecialesNoF.webp"
                                         alt="Hotcakes Especiales"
                                         style={{ width: '100%', maxWidth: '140px', display: 'block', margin: '0 auto 8px', filter: 'drop-shadow(0 4px 10px rgba(0,0,0,0.1))' }}
                                     />
                                     <div style={{ marginBottom: '4px' }}>
                                         <span style={{ fontFamily: 'Stardom, serif', color: '#141414', fontSize: '18px', display: 'block', lineHeight: 1.1 }}>Hotcakes Especiales (3 pzas)</span>
-                                        <span style={{ fontFamily: 'Stardom, serif', color: '#C01014', fontSize: '20px' }}>$85</span>
+                                        <span style={{ fontFamily: 'Stardom, serif', color: '#C01014', fontSize: '20px' }}>$95</span>
                                     </div>
                                     <p style={{ fontSize: '12px', color: 'rgba(20, 20, 20, 0.7)', lineHeight: 1.3 }}>
-                                        Orden de tres, servidos con tu topping favorito:<br />
-                                        Nutella <span style={{ color: '#C01014' }}>•</span> Philadelphia <span style={{ color: '#C01014' }}>•</span> Tocino
+                                        3 piezas con topping a tu gusto: Nutella, Philadelphia o Tocino. Porque los hotcakes tambien merecen celebrarse.
                                     </p>
                                 </div>
                             </div>
@@ -573,17 +585,14 @@ export const PaperMenuManana = () => {
                         {/* BEBIDAS Section */}
                         <div>
 
-
-
                             {/* Cafés de grano en 2 columnas */}
                             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2px 30px', marginBottom: '8px' }}>
-                                <MenuItemA4 name="Latte Macchiato (de grano)" price="$40" />
-                                <MenuItemA4 name="Americano Doble (de grano)" price="$40" />
-                                <MenuItemA4 name="Cappuccino (de grano)" price="$35" />
-                                <MenuItemA4 name="Café Americano (de grano)" price="$30" />
-                                <MenuItemA4 name="Espresso (de grano)" price="$25" />
+                                <MenuItemA4 name="Latte Macchiato (de grano)" price="$45" />
+                                <MenuItemA4 name="Americano Doble (de grano)" price="$45" />
+                                <MenuItemA4 name="Cappuccino (de grano)" price="$40" />
+                                <MenuItemA4 name="Café Americano (de grano)" price="$35" />
+                                <MenuItemA4 name="Espresso (de grano)" price="$35" />
                             </div>
-
 
                             <div style={{
                                 display: 'grid',
@@ -603,48 +612,47 @@ export const PaperMenuManana = () => {
                                 }}>
                                     <div style={{ textAlign: 'center' }}>
                                         <div style={{ fontFamily: 'Stardom, serif', color: '#141414', fontSize: '14px' }}>Nescafé</div>
-                                        <div style={{ fontFamily: 'Stardom, serif', color: '#C01014', fontSize: '15px', fontWeight: 'bold' }}>$20</div>
+                                        <div style={{ fontFamily: 'Stardom, serif', color: '#C01014', fontSize: '15px', fontWeight: 'bold' }}>$25</div>
                                     </div>
                                     <div style={{ fontFamily: 'Stardom, serif', color: '#FDDA04', fontSize: '18px', fontWeight: 'bold' }}>+</div>
                                     <div style={{ textAlign: 'center' }}>
                                         <div style={{ fontFamily: 'Stardom, serif', color: '#141414', fontSize: '14px' }}>Mini Pan</div>
-                                        <div style={{ fontFamily: 'Stardom, serif', color: '#C01014', fontSize: '15px', fontWeight: 'bold' }}>$10</div>
+                                        <div style={{ fontFamily: 'Stardom, serif', color: '#C01014', fontSize: '15px', fontWeight: 'bold' }}>$12</div>
                                     </div>
                                     <div style={{ fontFamily: 'Stardom, serif', color: '#FDDA04', fontSize: '18px', fontWeight: 'bold' }}>=</div>
                                     <div style={{ textAlign: 'center' }}>
                                         <div style={{ fontFamily: 'Stardom, serif', color: '#141414', fontSize: '15px', fontWeight: 'bold', lineHeight: 1 }}>Combo</div>
-                                        <div style={{ fontFamily: 'Stardom, serif', color: '#C01014', fontSize: '18px', fontWeight: 'bold' }}>$25</div>
+                                        <div style={{ fontFamily: 'Stardom, serif', color: '#C01014', fontSize: '18px', fontWeight: 'bold' }}>$30</div>
                                     </div>
                                 </div>
 
-                                {/* Right: Flan Napolitano (Night Menu Item, Morning Styling) */}
+                                {/* Right: Flan Napolitano */}
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px', paddingLeft: '15px', borderLeft: '1px dashed rgba(253, 218, 4, 0.3)' }}>
-                                    <img src="/images/noche/flanNoF.png" style={{ width: '60px', filter: 'drop-shadow(0 3px 6px rgba(0,0,0,0.1))' }} />
+                                    <img src="/images/noche/flanNoF.webp" style={{ width: '60px', filter: 'drop-shadow(0 3px 6px rgba(0,0,0,0.1))' }} />
                                     <div>
-                                        <div style={{ fontFamily: 'Stardom, serif', color: '#141414', fontSize: '16px', lineHeight: 1.1 }}>Flan Casero</div>
-                                        <div style={{ fontFamily: 'Stardom, serif', color: '#C01014', fontSize: '18px', fontWeight: 'bold' }}>$40</div>
+                                        <div style={{ fontFamily: 'Stardom, serif', color: '#141414', fontSize: '16px', lineHeight: 1.1 }}>Flan Napolitano</div>
+                                        <div style={{ fontFamily: 'Stardom, serif', color: '#C01014', fontSize: '18px', fontWeight: 'bold' }}>$45</div>
                                     </div>
                                 </div>
                             </div>
 
-
                             <div style={{ borderTop: '1px dashed rgba(253, 218, 4, 0.5)', paddingTop: '8px' }}>
-                                <MenuItemA4 name="Refrescos" price="$27" description="Coca-Cola, Sprite, Ciel Mineral, Del Valle Guayaba, Del Valle Mango, Sidral." />
+                                <MenuItemA4 name="Refrescos" price="$30" description="Coca-Cola, Sprite, Sidral, Fanta y mas de la familia Coca-Cola. Bien frios." />
                             </div>
 
                             <div style={{ marginTop: '4px' }}>
                                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
-                                    <MenuItemA4 name="Suero Mineral" price="$35" description="Agua mineral, limón y sal." />
-                                    <MenuItemA4 name="Suero Clamato" price="$55" description="Clamato, limón y salsas." />
+                                    <MenuItemA4 name="Suero Mineral" price="$45" description="Agua mineral con limon y sal. El clasico rehidratante que levanta a cualquiera." />
+                                    <MenuItemA4 name="Suero Clamato" price="$65" description="Clamato preparado. Balance perfecto entre picosito y refrescante. Bebida refrescante preparada al momento." />
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    {/* PARA LLEVAR SECTION (moved from Page 3) + QR - ENLARGED TO 1/3 PAGE */}
+                    {/* PARA LLEVAR SECTION + QR */}
                     <div style={{
                         position: 'absolute',
-                        bottom: 70,
+                        bottom: 50,
                         left: 40,
                         right: 40,
                         height: '280px',
@@ -665,7 +673,7 @@ export const PaperMenuManana = () => {
                                 Te lo preparamos todo por separado para que llegue perfecto.
                             </p>
                             <img
-                                src="/images/manana/parallevarNoF.png"
+                                src="/images/manana/parallevarNoF.webp"
                                 alt="Para Llevar"
                                 style={{ width: '240px', display: 'block', filter: 'drop-shadow(0 6px 15px rgba(0,0,0,0.15))' }}
                             />
@@ -691,11 +699,11 @@ export const PaperMenuManana = () => {
 
                     <PageFooterA4 subtitle="HOTCAKES Y CAFETERÍA" />
 
-                    <img src="/images/manana/cafeNoF.png" alt="" style={{
+                    <img src="/images/manana/cafeNoF.webp" alt="" style={{
                         position: 'absolute', bottom: '30px', right: '-80px', width: '120px',
                         transform: 'rotate(10deg)', opacity: 0.15
                     }} />
-                    <img src="/images/manana/panNoF.png" alt="" style={{
+                    <img src="/images/manana/panNoF.webp" alt="" style={{
                         position: 'absolute', top: '200px', left: '-20px', width: '80px',
                         transform: 'rotate(-20deg)', opacity: 0.25
                     }} />
