@@ -27,54 +27,56 @@ const slugify = (text) => text.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\
 // Manually mapping "NoF" images to likely item names
 const imageMap = {
     // MORNING
-    'plato de birria': '/images/manana/platoBirriaNoF.png',
-    'birriamen': '/images/manana/birriamenNoF.png',
-    'paquete familiar': '/images/manana/packBirria1NoF.png',
-    'tacos de birria': '/images/manana/ordentacobirriaNoF.png',
-    'quesabirria': '/images/manana/quesabirriasNoF.png',
-    'molletes': '/images/manana/molletesTodosNoF.png',
-    'sincronizada': '/images/manana/sinronizada1NoF.png',
-    'hotcakes tradicionales': '/images/manana/hotcakessencillosNoF.png',
-    'hotcakes especiales': '/images/manana/hotcakesEspecialesNoF.png',
-    'latte macchiato': '/images/manana/latteNoF.png',
-    'americano doble': '/images/manana/americanodobleNoF.png',
-    'cappuccino': '/images/manana/capuccinoNoF.png', 
-    'café americano': '/images/manana/cafeNoF.png',
-    'espresso': '/images/manana/dobleexpresoNoF.png',
-    'nescafé': '/images/manana/cafeNoF.png',
-    'combo nescafé + pan': '/images/manana/cafeminipanNoF.png',
-    'mini pan': '/images/manana/panNoF.png',
-    'flan casero': '/images/noche/flanNoF.png',
-    'refrescos': '/images/noche/cocaNoF.png',
-    'suero mineral': '/images/manana/sueromineralNoF.png',
-    'suero clamato': '/images/manana/sueroclamatoNoF.png',
+    'plato de birria': '/images/manana/platoBirriaNoF.webp',
+    'birriamen': '/images/manana/birriamenNoF.webp',
+    'paquete familiar': '/images/manana/packBirria1NoF.webp',
+    'medio paquete familiar': '/images/manana/packBirria1NoF.webp',
+    'tacos de birria': '/images/manana/ordentacobirriaNoF.webp',
+    'quesabirria': '/images/manana/quesabirriaNoF.webp',
+    'orden quesabirrias (2pz)': '/images/manana/quesabirriasordenNoF.webp',
+    'molletes': '/images/manana/molletesTodosNoF.webp',
+    'sincronizada': '/images/manana/sinronizada1NoF.webp',
+    'hotcakes tradicionales': '/images/manana/hotcakessencillosNoF.webp',
+    'hotcakes especiales': '/images/manana/hotcakesEspecialesNoF.webp',
+    'latte macchiato': '/images/manana/latteNoF.webp',
+    'americano doble': '/images/manana/americanodobleNoF.webp',
+    'cappuccino': '/images/manana/capuccinoNoF.webp', 
+    'café americano': '/images/manana/cafeNoF.webp',
+    'espresso': '/images/manana/dobleexpresoNoF.webp',
+    'nescafé': '/images/manana/cafeNoF.webp',
+    'combo nescafé + pan': '/images/manana/cafeminipanNoF.webp',
+    'mini pan': '/images/manana/panNoF.webp',
+    'flan napolitano': '/images/noche/flanNoF.webp',
+    'refrescos': '/images/noche/cocaNoF.webp',
+    'suero mineral': '/images/manana/sueromineralNoF.webp',
+    'suero clamato': '/images/manana/sueroclamatoNoF.webp',
 
     // NIGHT
     // Burgers
-    'sencilla': '/images/noche/hamburguesasencilaNoF.png',
-    'bacon': '/images/noche/hamburguesaNoF.png',
-    'hawaiana': '/images/noche/hamburguesahawaianaNoF.png',
-    'especial': '/images/noche/hamburguesaespecialNoF.png',
-    'sliders': '/images/noche/slidersNoF.png',
+    'sencilla': '/images/noche/hamburguesasencilaNoF.webp',
+    'bacon': '/images/noche/hamburguesaNoF.webp',
+    'hawaiana': '/images/noche/hamburguesahawaianaNoF.webp',
+    'especial': '/images/noche/hamburguesaespecialNoF.webp',
+    'sliders': '/images/noche/slidersPapasNoF.webp',
     // Wings
-    'orden de alitas': '/images/noche/alitasNoF.png',
-    'alitas': '/images/noche/alitasNoF.png', // Fallback
-    'boneless': '/images/noche/bonelessNoF.png',
+    'orden de alitas': '/images/noche/alitasNoF.webp',
+    'alitas': '/images/noche/alitasNoF.webp', // Fallback
+    'boneless': '/images/noche/bonelessNoF.webp',
     // Snacks
-    'papas bacon': '/images/noche/papasBaconNoF.png',
-    'orden papas francesas': '/images/noche/papasfrancesaNoF.png',
-    'salchipulpos': '/images/noche/salchipulpoplatoNoF.png',
+    'papas bacon': '/images/noche/papasBaconNoF.webp',
+    'orden papas francesas': '/images/noche/papasfrancesaNoF.webp',
+    'salchipulpos': '/images/noche/salchipulpoplatoNoF.webp',
     // Hot Dogs
-    'jumbo clásico': '/images/noche/hotdogsencilloNoF.png',
-    'jumbo bacon': '/images/noche/hotdogbaconNoF.png',
+    'jumbo clásico': '/images/noche/hotdogsencilloNoF.webp',
+    'jumbo bacon': '/images/noche/hotdogbaconNoF.webp',
     // Dessert & Drinks
-    'flan napolitano': '/images/noche/flanNoF.png',
+    'flan napolitano': '/images/noche/flanNoF.webp',
     // Refrescos maps to existing 'refrescos' key (line 30)
 };
 
 // Fallback images
-const fallbackMorning = '/images/manana/consomeNoF.png';
-const fallbackNight = '/images/noche/hamburguesaNoF.png';
+const fallbackMorning = '/images/manana/consomeNoF.webp';
+const fallbackNight = '/images/noche/hamburguesaNoF.webp';
 
 const getImagePath = (itemName, theme) => {
     const key = itemName.toLowerCase();
@@ -112,7 +114,7 @@ const getSizeClass = (itemName) => {
     
     // HUGE (2x2) - The main stars (Only 1 per theme ideally)
     // Morning: Paquete Familiar | Night: Hamburguesa Especial
-    if (name.includes('paquete familiar') || name === 'especial') {
+    if ((name.includes('paquete familiar') && !name.includes('medio')) || name === 'especial') {
         return 'col-span-2 row-span-2';
     }
     
@@ -194,8 +196,10 @@ const getSizeImageClass = (spanClass) => {
                                     src={item.image} 
                                     class="w-full h-full object-contain drop-shadow-md"
                                     alt={item.name}
-                                    style={`view-transition-name: image-${slugify(item.name)}`}                                    loading="lazy"
-                                    decoding="async"                                />
+                                    style={`view-transition-name: image-${slugify(item.name)}`}
+                                    loading="lazy"
+                                    decoding="async"
+                                />
                             </div>
                         </div>
                     </a>
@@ -246,8 +250,10 @@ const getSizeImageClass = (spanClass) => {
                                     src={item.image} 
                                     class="w-full h-full object-contain drop-shadow-2xl"
                                     alt={item.name}
-                                    style={`view-transition-name: image-${slugify(item.name)}`}                                    loading="lazy"
-                                    decoding="async"                                />
+                                    style={`view-transition-name: image-${slugify(item.name)}`}
+                                    loading="lazy"
+                                    decoding="async"
+                                />
                             </div>
                         </div>
                     </a>

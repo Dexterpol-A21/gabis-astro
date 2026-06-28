@@ -66,6 +66,10 @@ export function ExpandableMenu({ optimizedAssets = {} }) {
 
     // Sync with Global Theme (HeroSlider)
     useEffect(() => {
+        // Initial sync with HTML class
+        const isDark = document.documentElement.classList.contains('dark');
+        if (isDark) setMode('night');
+
         const handleGlobalTheme = (e) => {
             if (e.detail && e.detail.mode) {
                 setMode(prevMode => {

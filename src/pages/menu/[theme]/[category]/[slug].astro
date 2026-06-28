@@ -22,7 +22,7 @@ export async function getStaticPaths() {
                     category: slugify(cat.name),
                     slug: slugify(item.name),
                 },
-                props: { item, category: cat.name, theme: "morning" },
+                props: { item, category: cat.name, theme: "morning", categoryExtras: cat.extras || null, categoryNote: cat.note || null },
             });
         });
     });
@@ -36,7 +36,7 @@ export async function getStaticPaths() {
                     category: slugify(cat.name),
                     slug: slugify(item.name),
                 },
-                props: { item, category: cat.name, theme: "night" },
+                props: { item, category: cat.name, theme: "night", categoryExtras: cat.extras || null, categoryNote: cat.note || null },
             });
         });
     });
@@ -44,8 +44,31 @@ export async function getStaticPaths() {
     return paths;
 }
 
-const { item, category, theme } = Astro.props;
+const { item, category, theme, categoryExtras: rawExtras, categoryNote } = Astro.props;
+// Sliders ya incluyen papas, no mostrar "Añade papas" como extra
+const categoryExtras = (item.name === "Sliders" && rawExtras)
+  ? rawExtras.filter(e => typeof e === 'string' || e.name !== "Añade papas")
+  : rawExtras;
 const isNight = theme === "night";
+
+// Items que incluyen papas
+const itemsConPapas = ["sliders", "orden de alitas", "boneless", "salchipulpos"];
+const incluyePapas = itemsConPapas.includes(item.name.toLowerCase());
+
+// Quitar "Incluyen papas." y "Elige tu salsa favorita." del note porque ya hay badge y salsas visibles
+const cleanNote = categoryNote
+  ? categoryNote
+      .replace(/^Incluyen papas\.\s*/i, "")
+      .replace(/^Elige tu salsa favorita\.?\s*/i, "")
+      .trim()
+  : null;
+const showNote = cleanNote && cleanNote.length > 0;
+
+// Extras de tipo string son salsas → "puedes elegir", resto → "puedes agregar"
+const extrasLabel = categoryExtras && categoryExtras.length > 0 && typeof categoryExtras[0] === 'string'
+  ? "puedes elegir"
+  : "puedes agregar";
+
 const slugify = (text) =>
     text
         .toLowerCase()
@@ -66,46 +89,48 @@ const waLink = `https://wa.me/${waNumber}?text=${encodeURIComponent(waMessage)}`
 // --- IMAGE MAPPING (Shared with MenuBento) ---
 const imageMap = {
     // MORNING
-    "plato de birria": "/images/manana/platoBirriaNoF.png",
-    birriamen: "/images/manana/birriamenNoF.png",
-    "paquete familiar": "/images/manana/packBirria1NoF.png",
-    "tacos de birria": "/images/manana/ordentacobirriaNoF.png",
-    quesabirria: "/images/manana/quesabirriasNoF.png",
-    molletes: "/images/manana/molletesTodosNoF.png",
-    sincronizada: "/images/manana/sinronizada1NoF.png",
-    "hotcakes tradicionales": "/images/manana/hotcakessencillosNoF.png",
-    "hotcakes especiales": "/images/manana/hotcakesEspecialesNoF.png",
-    "latte macchiato": "/images/manana/latteNoF.png",
-    "americano doble": "/images/manana/americanodobleNoF.png",
-    cappuccino: "/images/manana/capuccinoNoF.png",
-    "café americano": "/images/manana/cafeNoF.png",
-    espresso: "/images/manana/dobleexpresoNoF.png",
-    nescafé: "/images/manana/cafeNoF.png",
-    "combo nescafé + pan": "/images/manana/cafeminipanNoF.png",
-    "mini pan": "/images/manana/panNoF.png",
-    "flan casero": "/images/noche/flanNoF.png",
-    refrescos: "/images/noche/cocaNoF.png",
+    "plato de birria": "/images/manana/platoBirriaNoF.webp",
+    birriamen: "/images/manana/birriamenNoF.webp",
+    "paquete familiar": "/images/manana/packBirria1NoF.webp",
+    "medio paquete familiar": "/images/manana/packBirria1NoF.webp",
+    "tacos de birria": "/images/manana/ordentacobirriaNoF.webp",
+    quesabirria: "/images/manana/quesabirriaNoF.webp",
+    "orden quesabirrias (2pz)": "/images/manana/quesabirriasordenNoF.webp",
+    molletes: "/images/manana/molletesTodosNoF.webp",
+    sincronizada: "/images/manana/sinronizada1NoF.webp",
+    "hotcakes tradicionales": "/images/manana/hotcakessencillosNoF.webp",
+    "hotcakes especiales": "/images/manana/hotcakesEspecialesNoF.webp",
+    "latte macchiato": "/images/manana/latteNoF.webp",
+    "americano doble": "/images/manana/americanodobleNoF.webp",
+    cappuccino: "/images/manana/capuccinoNoF.webp",
+    "café americano": "/images/manana/cafeNoF.webp",
+    espresso: "/images/manana/dobleexpresoNoF.webp",
+    nescafé: "/images/manana/cafeNoF.webp",
+    "combo nescafé + pan": "/images/manana/cafeminipanNoF.webp",
+    "mini pan": "/images/manana/panNoF.webp",
+    "flan napolitano": "/images/noche/flanNoF.webp",
+    refrescos: "/images/noche/cocaNoF.webp",
 
     // NIGHT
     // Burgers
-    sencilla: "/images/noche/hamburguesasencilaNoF.png",
-    bacon: "/images/noche/hamburguesaNoF.png",
-    hawaiana: "/images/noche/hamburguesahawaianaNoF.png",
-    especial: "/images/noche/hamburguesaespecialNoF.png",
-    sliders: "/images/noche/slidersNoF.png",
+    sencilla: "/images/noche/hamburguesasencilaNoF.webp",
+    bacon: "/images/noche/hamburguesaNoF.webp",
+    hawaiana: "/images/noche/hamburguesahawaianaNoF.webp",
+    especial: "/images/noche/hamburguesaespecialNoF.webp",
+    sliders: "/images/noche/slidersPapasNoF.webp",
     // Wings
-    "orden de alitas": "/images/noche/alitasNoF.png",
-    alitas: "/images/noche/alitasNoF.png", // Fallback
-    boneless: "/images/noche/bonelessNoF.png",
+    "orden de alitas": "/images/noche/alitasNoF.webp",
+    alitas: "/images/noche/alitasNoF.webp", // Fallback
+    boneless: "/images/noche/bonelessNoF.webp",
     // Snacks
-    "papas bacon": "/images/noche/papasBaconNoF.png",
-    "orden papas francesas": "/images/noche/papa1NoF.png",
-    salchipulpos: "/images/noche/salchipulposNoF.png",
+    "papas bacon": "/images/noche/papasBaconNoF.webp",
+    "orden papas francesas": "/images/noche/papasfrancesaNoF.webp",
+    salchipulpos: "/images/noche/salchipulpoplatoNoF.webp",
     // Hot Dogs
-    "jumbo clásico": "/images/noche/hotdogsencilloNoF.png",
-    "jumbo bacon": "/images/noche/hotdogbaconNoF.png",
+    "jumbo clásico": "/images/noche/hotdogsencilloNoF.webp",
+    "jumbo bacon": "/images/noche/hotdogbaconNoF.webp",
     // Dessert & Drinks
-    "flan napolitano": "/images/noche/flanNoF.png",
+    "flan napolitano": "/images/noche/flanNoF.webp",
     // Refrescos maps to existing 'refrescos' key
 };
 
@@ -127,19 +152,19 @@ const getImagePath = (itemName, theme) => {
                 path = imageMap[found];
             } else {
                  // 3. Fallback
-                 path = theme === "morning" ? "/images/manana/consomeNoF.png" : "/images/noche/hamburguesaNoF.png";
+                 path = theme === "morning" ? "/images/manana/consomeNoF.webp" : "/images/noche/hamburguesaNoF.webp";
             }
         }
     }
 
     // Try to find the imported image module for optimization
     if (path) {
-        // Path is something like "/images/manana/platoBirriaNoF.png"
+        // Path is something like "/images/manana/platoBirriaNoF.webp"
         // import.meta.glob keys are relative to this file, OR absolute if we check carefully.
         // But glob above uses relative path ../../../../../src/assets/images/
         // Actually, importing relative to src/assets is safer.
 
-        const filename = path.split('/').pop(); // platoBirriaNoF.png
+        const filename = path.split('/').pop(); // platoBirriaNoF.webp
         
         // Find in glob entries
         const foundEntry = Object.entries(imagesGlob).find(([k, v]) => k.includes(filename));
@@ -156,98 +181,118 @@ const imageAsset = getImagePath(item.name, theme);
 const isOptimized = typeof imageAsset !== 'string';
 
 // --- SEO DESCRIPTION GENERATOR ---
-// Honest, informative descriptions without marketing fluff
 const getSEODescription = (item, category, isNight) => {
     const baseDesc = item.description || "";
     const name = item.name;
     const cat = category.toLowerCase();
 
-    let details = "";
-
     if (!isNight) {
-        // Morning - Focus on preparation and ingredients
         if (cat.includes("birria") || cat.includes("caldos")) {
-            details = `Preparado con especias tradicionales y carne de res cocida lentamente. Se sirve con cilantro, cebolla picada y tortillas de maíz. Disponible en horario de mañana (7:00 - 16:00).`;
-        } else if (cat.includes("quesabirria") || cat.includes("tacos")) {
-            details = `La tortilla se dora en el comal con queso y carne de birria. Cada orden incluye consomé para acompañar. Servido caliente al momento.`;
-        } else if (cat.includes("almuerzo") || cat.includes("antojo")) {
-            details = `Preparado al momento con ingredientes frescos del día. Opción popular para media mañana. Se puede personalizar según preferencia.`;
-        } else if (cat.includes("café") || cat.includes("cafetería")) {
+            const extra = `Preparado con especias tradicionales y carne de res cocida lentamente. Se sirve con cilantro, cebolla picada y tortillas de maiz.`;
+            if (!baseDesc) return extra;
+            const combined = `${baseDesc} ${extra}`;
+            if (combined.length > 250) return baseDesc;
+            return combined;
+        }
+        if (cat.includes("quesabirria") || cat.includes("tacos")) {
+            const extra = `Servido caliente al momento. Cada orden incluye consome para acompanar.`;
+            return baseDesc ? `${baseDesc} ${extra}` : extra;
+        }
+        if (cat.includes("almuerzo") || cat.includes("antojo")) {
+            const extra = `Preparado al momento con ingredientes frescos. Se puede personalizar segun preferencia.`;
+            return baseDesc ? `${baseDesc} ${extra}` : extra;
+        }
+        if (cat.includes("cafe") || cat.includes("cafeteria")) {
             if (name.toLowerCase().includes("hotcake")) {
-                details = `Tres piezas esponjosas servidas calientes. Acompañadas de mantequilla y miel. Opción de agregar toppings adicionales.`;
-            } else {
-                details = `Bebida caliente preparada al momento. Opción de café de grano o soluble según disponibilidad. Se puede pedir para llevar.`;
+                const extra = `Tres piezas esponjosas servidas calientes con mantequilla y miel.`;
+                return baseDesc ? `${baseDesc} ${extra}` : extra;
             }
-        } else {
-            details = `Disponible en horario de mañana. Preparado al momento. Consulta ingredientes adicionales en el establecimiento.`;
+            return baseDesc || `Preparado al momento.`;
         }
-    } else {
-        // Night - Focus on portion sizes and what's included
-        if (cat.includes("hamburguesa") || cat.includes("burger")) {
-            details = `Carne de res (130g) cocinada en plancha. Servida en pan con lechuga, jitomate, cebolla y aderezos. Todas las hamburguesas incluyen papas a la francesa.`;
-        } else if (cat.includes("alitas") || cat.includes("boneless")) {
-            details = `6 piezas por orden. Servidas con papas a la francesa. Elige tu salsa: BBQ, Original, Búfalo, Habanero Mango, o Negra Especial. Servidas calientes.`;
-        } else if (cat.includes("snack") || cat.includes("papas")) {
-            details = `Porción individual. Servido caliente con los aderezos indicados. Opción para compartir o como acompañamiento.`;
-        } else if (cat.includes("jocho") || cat.includes("hot dog")) {
-            details = `Salchicha de pavo tamaño jumbo. Servida en pan con vegetales frescos y aderezos al gusto. Porción individual.`;
-        } else {
-            details = `Disponible en horario nocturno (16:00 - 22:00). Preparado al momento. Ideal para llevar o consumir en el local.`;
+        if (cat.includes("suero")) {
+            const extra = `Bebida refrescante preparada al momento.`;
+            return baseDesc ? `${baseDesc} ${extra}` : extra;
         }
+        return baseDesc || `Preparado al momento con ingredientes frescos.`;
     }
 
-    return baseDesc ? `${baseDesc} ${details}` : details;
+    if (cat.includes("hamburguesa") || cat.includes("burger")) {
+        return baseDesc || `Carne de res (130g) cocinada en plancha con ingredientes frescos.`;
+    }
+    if (cat.includes("alitas") || cat.includes("boneless")) {
+        const extra = `Elige tu salsa favorita. Incluye papas a la francesa.`;
+        return baseDesc ? `${baseDesc} ${extra}` : extra;
+    }
+    if (cat.includes("snack") || cat.includes("papas")) {
+        return baseDesc || `Servido caliente. Para compartir o como acompanamiento.`;
+    }
+    if (cat.includes("jocho") || cat.includes("hot dog")) {
+        if (name.toLowerCase().includes("jumbo")) {
+            return baseDesc || `Salchicha de pavo jumbo en pan con vegetales frescos.`;
+        }
+        return baseDesc || `Preparado al momento. Ideal para llevar.`;
+    }
+    if (cat.includes("suero")) {
+        const extra = `Bebida refrescante preparada al momento.`;
+        return baseDesc ? `${baseDesc} ${extra}` : extra;
+    }
+    return baseDesc || `Preparado al momento. Ideal para llevar o consumir en el local.`;
 };
 
 const expandedDescription = getSEODescription(item, category, isNight);
 const googleMapsLink = "https://maps.app.goo.gl/tuLinkAqui"; // Replace with actual link if known, otherwise generic or query
 ---
 
-<Layout title={`${item.name} | Gabis`} hideNavMenu={true}>
+<Layout title={`${item.name} | Gabis`} hideNavMenu={false} forceHeaderVisible={true} hideSwitcher={true}>
     <div
-        class="h-screen w-full overflow-hidden transition-colors duration-500 flex flex-col pt-6 pb-6 px-4 md:px-8"
+        class="min-h-screen w-full transition-colors duration-500 flex flex-col px-4 md:px-8 pb-24 md:pb-0"
         style={`background-color: ${bgColor}; color: ${textColor}`}
     >
-        <!-- SIMPLE HEADER -->
-        <header
-            class="w-full max-w-6xl mx-auto mb-4 md:mb-8 flex justify-between items-center flex-none"
-        >
-            <a
-                href="/"
-                class="flex items-center gap-3 hover:opacity-80 transition-opacity"
+
+        <!-- TITLE (Mobile: above image) -->
+        <div class="md:hidden pt-4 pb-4">
+            <span
+                class="inline-block px-4 py-1.5 rounded-full text-xs font-black tracking-widest uppercase mb-3 shadow-sm transform -rotate-1"
+                style="background-color: #FDDA04; color: #141414;"
             >
-                <div
-                    style={`width: 32px; height: 32px; background-color: ${themeColor}; mask-image: url(/images/gabisNoF.svg); -webkit-mask-image: url(/images/gabisNoF.svg); mask-size: contain; -webkit-mask-size: contain; mask-repeat: no-repeat; -webkit-mask-repeat: no-repeat; mask-position: center; -webkit-mask-position: center;`}
-                >
-                </div>
-                <span
-                    style={`font-family: ${themeFont}; font-size: 24px; color: ${themeColor}; letter-spacing: 0.05em;`}
-                    >GABIS</span
-                >
-            </a>
-            <a
-                href="/"
-                class="text-sm opacity-60 hover:opacity-100 transition-opacity flex items-center gap-2 font-medium"
-                style={`color: ${textColor}`}
+                ✦ {category}
+            </span>
+            <h1
+                class="text-4xl leading-none mb-2"
+                style={`font-family: ${themeFont}; color: ${themeColor}`}
             >
-                <span>←</span> Volver
-            </a>
-        </header>
+                {item.name}
+            </h1>
+            <p class="text-2xl font-light opacity-90 flex items-center gap-3 flex-wrap">
+                {item.price}
+                {isNight ? (
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase" style="background-color: rgba(254,113,2,0.12); color: #FE7102;">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+                        noche
+                    </span>
+                ) : (
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase" style="background-color: rgba(192,16,20,0.08); color: #C01014;">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+                        mañana
+                    </span>
+                )}
+            </p>
+        </div>
 
         <div
-            class="flex-1 w-full max-w-6xl mx-auto grid md:grid-cols-2 gap-6 md:gap-12 items-center overflow-hidden"
+            class="flex-1 w-full max-w-6xl mx-auto grid md:grid-cols-2 gap-0 md:gap-12 items-start md:items-center pt-0 md:pt-24 md:pb-6"
         >
-            <!-- HERO IMAGE -->
+            <!-- HERO IMAGE (mañana: izquierda | noche: derecha via order) -->
             <div
-                class="relative w-full h-full max-h-[40vh] md:max-h-full flex items-center justify-center p-4"
+                class={`relative w-full flex items-center justify-center p-2 md:p-8 ${isNight ? 'md:order-2' : 'md:order-1'}`}
             >
                 <div
-                    class="aspect-square w-auto h-full max-h-full bg-white/5 rounded-3xl overflow-hidden shadow-2xl relative border border-white/10 flex items-center justify-center"
+                    class="aspect-square w-full max-w-[280px] md:max-w-[380px] bg-white/5 rounded-3xl overflow-hidden relative border border-white/10 flex items-center justify-center"
                 >
                     {isOptimized ? (
                         <Image
                             src={imageAsset}
-                            class="w-full h-full object-contain p-8 hover:scale-105 transition-transform duration-500"
+                            class="w-full h-full object-contain p-6 md:p-8 hover:scale-105 transition-transform duration-500 drop-shadow-2xl"
                             alt={item.name}
                             format="avif"
                             quality={80}
@@ -257,7 +302,7 @@ const googleMapsLink = "https://maps.app.goo.gl/tuLinkAqui"; // Replace with act
                         <img
                             src={imageAsset}
                             onerror="this.style.display='none'"
-                            class="w-full h-full object-contain p-8 hover:scale-105 transition-transform duration-500"
+                            class="w-full h-full object-contain p-6 md:p-8 hover:scale-105 transition-transform duration-500 drop-shadow-2xl"
                             alt={item.name}
                             transition:name={`image-${slugify(item.name)}`}
                         />
@@ -265,11 +310,12 @@ const googleMapsLink = "https://maps.app.goo.gl/tuLinkAqui"; // Replace with act
                 </div>
             </div>
 
-            <!-- DETAILS -->
+            <!-- DETAILS (mañana: derecha | noche: izquierda via order) -->
             <div
-                class="flex flex-col justify-center h-full overflow-y-auto pr-2"
+                class={`flex flex-col justify-center ${isNight ? 'md:order-1' : 'md:order-2'}`}
             >
-                <div>
+                <!-- Title & Price (Desktop only) -->
+                <div class="hidden md:block">
                     <span
                         class="inline-block px-4 py-1.5 rounded-full text-xs font-black tracking-widest uppercase mb-4 shadow-sm transform -rotate-1"
                         style="background-color: #FDDA04; color: #141414;"
@@ -282,49 +328,120 @@ const googleMapsLink = "https://maps.app.goo.gl/tuLinkAqui"; // Replace with act
                     >
                         {item.name}
                     </h1>
-                    <p class="text-2xl md:text-3xl font-light opacity-90">
+                    <p class="text-2xl md:text-3xl font-light opacity-90 flex items-center gap-3 flex-wrap">
                         {item.price}
+                        {isNight ? (
+                            <span class="inline-flex items-center gap-0.5">
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase" style="background-color: rgba(254,113,2,0.12); color: #FE7102;">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+                                    noche
+                                </span>
+                                {incluyePapas && (
+                                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase" style="background-color: rgba(253,218,4,0.15); color: #FDDA04;">
+                                        incluye papas
+                                    </span>
+                                )}
+                            </span>
+                        ) : (
+                            <span class="inline-flex items-center gap-0.5">
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase" style="background-color: rgba(192,16,20,0.08); color: #C01014;">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+                                    mañana
+                                </span>
+                            </span>
+                        )}
                     </p>
                 </div>
 
                 <!-- Expanded SEO Description -->
                 <p
-                    class="text-base md:text-lg opacity-70 leading-relaxed max-w-md mt-6 mb-8"
+                    class="text-base md:text-lg opacity-70 leading-relaxed max-w-md mt-1 md:mt-6 mb-4"
                 >
                     {expandedDescription}
                 </p>
 
+                {showNote && (
+                    <div class="flex items-center gap-2 mb-4 mt-2">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={themeColor} stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+                        <span class="text-xs font-medium opacity-60" style={`color: ${textColor};`}>{cleanNote}</span>
+                    </div>
+                )}
+
+                {categoryExtras && categoryExtras.length > 0 && (
+                    <div class="mb-6 mt-2">
+                        <span class="text-[10px] font-black uppercase tracking-[0.2em] opacity-30 mb-2 block" style={`color: ${textColor};`}>{extrasLabel}</span>
+                        <div class="grid grid-cols-3 gap-2">
+                            {categoryExtras.map((extra) => {
+                                if (typeof extra === 'string') {
+                                    // Salsas: convertimos "Salsas: BBQ, Original, Negra..." en chips
+                                    const salsaNames = extra.replace(/^Salsas:\s*/i, "").split(",").map(s => s.trim()).filter(Boolean);
+                                    return (
+                                        <div class="col-span-3">
+                                            <div class="flex flex-wrap gap-1.5">
+                                                {salsaNames.map(salsa => (
+                                                    <span class="px-2.5 py-1 rounded-full text-[11px] font-semibold leading-tight" style={`background-color: ${themeColor}15; color: ${textColor}; border: 1px solid ${themeColor}30;`}>
+                                                        {salsa}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    );
+                                }
+                                return (
+                                    <div class="rounded-xl px-3 py-2.5 text-center" style={`background-color: ${isNight ? 'rgba(255,255,255,0.04)' : 'rgba(0,0,0,0.03)'};`}>
+                                        <div class="text-lg font-bold leading-none mb-0.5" style={`font-family: ${themeFont}; color: ${themeColor};`}>
+                                            {extra.price}
+                                        </div>
+                                        <div class="text-[11px] font-bold uppercase tracking-wide leading-tight mb-0.5" style={`color: ${textColor};`}>
+                                            {extra.name}
+                                        </div>
+                                        {extra.description && (
+                                            <div class="text-[10px] leading-tight opacity-40" style={`color: ${textColor};`}>
+                                                {extra.description}
+                                            </div>
+                                        )}
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </div>
+                )}
+
                 <!-- DUAL CTAS -->
                 <div
-                    class="pt-6 border-t border-white/10 flex flex-col sm:flex-row gap-3 md:gap-4 mt-auto md:mt-0"
+                    class="pt-6 border-t border-white/10 flex flex-col sm:flex-row gap-3 md:gap-4 overflow-visible"
                 >
-                    <!-- 1. Pedir para Pickup (WhatsApp) -->
+                    <!-- 1. Pedir por WhatsApp -->
                     <a
                         href={waLink}
                         target="_blank"
-                        class="flex-1 inline-flex justify-center items-center gap-3 px-6 py-3 md:px-8 md:py-4 rounded-full text-white font-bold tracking-wide hover:scale-105 transition-transform shadow-lg hover:shadow-xl text-sm md:text-base"
-                        style={`background-color: #25D366`}
+                        class="group flex-1 inline-flex justify-center items-center gap-3 px-6 py-4 md:py-5 rounded-2xl font-bold tracking-wide transition-colors duration-300 border-2 text-sm md:text-base"
+                        style={`border-color: #25D366; color: #25D366; background-color: transparent;`}
+                        onmouseover={`this.style.backgroundColor='#25D366'; this.style.color='#ffffff';`}
+                        onmouseout={`this.style.backgroundColor='transparent'; this.style.color='#25D366';`}
                     >
                         <svg
-                            class="w-5 h-5 md:w-6 md:h-6"
+                            class="w-5 h-5 md:w-6 md:h-6 shrink-0 transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6"
                             fill="currentColor"
                             viewBox="0 0 24 24"
                             ><path
                                 d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.008-.57-.008-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"
                             ></path></svg
                         >
-                        Pedir para Pickup
+                        Pedir por WhatsApp
                     </a>
 
-                    <!-- 2. Quiero ir (Maps) -->
+                    <!-- 2. Cómo llegar (Maps) -->
                     <a
                         href="https://www.google.com/maps/search/?api=1&query=Gabis+Calle+La+Fama+14+Tlalpan+CDMX"
                         target="_blank"
-                        class="flex-1 inline-flex justify-center items-center gap-3 px-6 py-3 md:px-8 md:py-4 rounded-full font-bold tracking-wide hover:scale-105 transition-transform border-2 hover:bg-white hover:text-black text-sm md:text-base"
-                        style={`border-color: ${themeColor}; color: ${themeColor}`}
+                        class="group flex-1 inline-flex justify-center items-center gap-3 px-6 py-4 md:py-5 rounded-2xl font-bold tracking-wide transition-colors duration-300 border-2 text-sm md:text-base"
+                        style={`border-color: ${themeColor}; color: ${themeColor}; background-color: transparent;`}
+                        onmouseover={`this.style.backgroundColor='${themeColor}'; this.style.color='${isNight ? '#141414' : '#ffffff'}';`}
+                        onmouseout={`this.style.backgroundColor='transparent'; this.style.color='${themeColor}';`}
                     >
                         <svg
-                            class="w-5 h-5 md:w-6 md:h-6"
+                            class="w-5 h-5 md:w-6 md:h-6 shrink-0 transition-transform duration-300 group-hover:scale-110"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -340,9 +457,28 @@ const googleMapsLink = "https://maps.app.goo.gl/tuLinkAqui"; // Replace with act
                                 d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                             ></path></svg
                         >
-                        Quiero ir
+                        Cómo llegar
                     </a>
                 </div>
+
+                <!-- Volver al menú (desktop only, mobile has bottom nav VOLVER) -->
+                <a
+                    href="/#menu-bento"
+                    id="back-link"
+                    class="hidden md:flex group mt-5 w-full text-center py-4 rounded-2xl font-bold tracking-wide transition-colors duration-300 text-base items-center justify-center gap-2"
+                    style={`background-color: ${themeColor}; color: #ffffff;`}
+                    onclick="
+                        if(document.referrer && document.referrer.includes(location.hostname)){
+                            history.back();
+                            return false;
+                        }
+                    "
+                >
+                    <svg class="w-5 h-5 transition-transform duration-300 group-hover:-translate-x-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                    Volver al menú
+                </a>
             </div>
         </div>
     </div>

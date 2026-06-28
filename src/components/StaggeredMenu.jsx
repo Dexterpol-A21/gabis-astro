@@ -29,7 +29,8 @@ export const StaggeredMenu = ({
   closeOnClickAway = true,
   onMenuOpen = () => { },
   onMenuClose = () => { },
-  forceVisible = false
+  forceVisible = false,
+  hideSwitcher = false
 }) => {
   const [open, setOpen] = useState(false);
   const openRef = useRef(false);
@@ -67,6 +68,10 @@ export const StaggeredMenu = ({
 
   // Listener for Theme Change
   React.useEffect(() => {
+    // Initial sync with HTML class
+    const isDark = document.documentElement.classList.contains('dark');
+    if (isDark) setThemeMode('night');
+
     const handleTheme = (e) => {
       if (e.detail && e.detail.mode) {
         setThemeMode(e.detail.mode);
@@ -287,12 +292,10 @@ export const StaggeredMenu = ({
         if (socialTitle) gsap.set(socialTitle, { opacity: 0 });
         if (socialLinks.length) gsap.set(socialLinks, { y: 25, opacity: 0 });
 
-        // Ensure overflow is reset
         document.body.style.overflow = "auto";
       }
     });
 
-    // Reset overflow
     document.body.style.overflow = "auto";
   }, [position]);
 
@@ -301,7 +304,6 @@ export const StaggeredMenu = ({
     openRef.current = target;
     setOpen(target);
 
-    // Toggle body overflow
     document.body.style.overflow = target ? "hidden" : "auto";
 
     if (target) {
@@ -465,9 +467,11 @@ export const StaggeredMenu = ({
         </a>
 
         {/* THEME SWITCHER (Center - Absolute to stay centered regardless of side width) */}
+        {!hideSwitcher && (
         <div className="hidden md:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[10000]">
           <MenuSwitcher />
         </div>
+        )}
 
         {/* MENU TOGGLE BUTTON (Ghost Style) */}
         <button

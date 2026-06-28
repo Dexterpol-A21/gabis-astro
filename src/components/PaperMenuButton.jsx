@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
 export const PaperMenuButton = () => {
-    const [mode, setMode] = useState('morning');
+    const [mode, setMode] = useState('morning'); // 'morning' | 'night'
     const isNight = mode === 'night';
 
     useEffect(() => {
-        // Initial check in case theme is already set
-        if (document.documentElement.classList.contains('dark')) {
-            setMode('night');
-        }
+        // Initial check
+        const isDark = document.documentElement.classList.contains('dark');
+        if (isDark) setMode('night');
 
         const handleThemeChange = (e) => {
             if (e.detail && e.detail.mode) {

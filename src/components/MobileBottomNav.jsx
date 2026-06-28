@@ -59,15 +59,15 @@ export const MobileBottomNav = ({
         { label: "Eventos", link: "/eventos" },
         { label: "Ubicación", link: "/ubicacion" },
         { label: "FAQ", link: "/faq" }
-    ]
+    ],
+    hideSwitcher = false
 }) => {
     const [menuOpen, setMenuOpen] = useState(false);
     const [isNight, setIsNight] = useState(false);
 
-    // Sync with document class
+    // Sync with document class (for cross-tab / manual DOM changes)
     useEffect(() => {
         setIsNight(document.documentElement.classList.contains('dark'));
-
         const observer = new MutationObserver(() => {
             setIsNight(document.documentElement.classList.contains('dark'));
         });
@@ -237,16 +237,29 @@ export const MobileBottomNav = ({
                 className="flex items-stretch relative"
                 style={{ paddingBottom: 'env(safe-area-inset-bottom)', zIndex: 51 }}
             >
-                {/* Left Half - Mañana Side (Red) */}
+                {/* Left Half */}
                 <button
-                    onClick={isNight ? () => toggleTheme(false) : handleMenuClick}
+                    onClick={hideSwitcher ? (isNight ? (() => {
+                        if(document.referrer && document.referrer.includes(location.hostname)){
+                            history.back();
+                        } else {
+                            location.href = '/#menu-bento';
+                        }
+                    }) : handleMenuClick) : (isNight ? () => toggleTheme(false) : handleMenuClick)}
                     className="flex-1 flex items-center justify-center gap-2 py-4 transition-all duration-300"
                     style={{
                         backgroundColor: isNight ? '#1a1a1a' : '#C01014',
                         color: '#ffffff'
                     }}
                 >
-                    {isNight ? (
+                    {(hideSwitcher && isNight) ? (
+                        <>
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                <path d="M19 12H5M12 19l-7-7 7-7"/>
+                            </svg>
+                            <span style={{ fontFamily: 'Tanker' }} className="text-sm tracking-wider">VOLVER</span>
+                        </>
+                    ) : isNight ? (
                         <span style={{ fontFamily: 'Stardom' }} className="text-sm tracking-wider">MAÑANA</span>
                     ) : (
                         <>
@@ -288,16 +301,29 @@ export const MobileBottomNav = ({
                     />
                 </a>
 
-                {/* Right Half - Noche Side (Orange) */}
+                {/* Right Half */}
                 <button
-                    onClick={isNight ? handleMenuClick : () => toggleTheme(true)}
+                    onClick={hideSwitcher ? (isNight ? handleMenuClick : (() => {
+                        if(document.referrer && document.referrer.includes(location.hostname)){
+                            history.back();
+                        } else {
+                            location.href = '/#menu-bento';
+                        }
+                    })) : (isNight ? handleMenuClick : () => toggleTheme(true))}
                     className="flex-1 flex items-center justify-center gap-2 py-4 transition-all duration-300"
                     style={{
                         backgroundColor: isNight ? '#FE7102' : '#1a1a1a',
                         color: '#ffffff'
                     }}
                 >
-                    {isNight ? (
+                    {(hideSwitcher && !isNight) ? (
+                        <>
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                <path d="M19 12H5M12 19l-7-7 7-7"/>
+                            </svg>
+                            <span style={{ fontFamily: 'Tanker' }} className="text-sm tracking-wider">VOLVER</span>
+                        </>
+                    ) : isNight ? (
                         <>
                             <span style={{ fontFamily: 'Tanker' }} className="text-sm tracking-wider">MENÚ</span>
                             {/* Animated Hamburger/X Icon for Night */}

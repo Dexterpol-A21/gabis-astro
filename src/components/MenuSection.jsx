@@ -1,8 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { menuData } from '../data/menu';
 
 export const MenuSection = () => {
-    const [mode, setMode] = useState('morning'); // 'morning' | 'night'
+    const [mode, setMode] = useState('morning');
+
+    useEffect(() => {
+        // Initial sync from HTML class
+        const isDark = document.documentElement.classList.contains('dark');
+        if (isDark) setMode('night');
+
+        const handleTheme = (e) => {
+            if (e.detail && e.detail.mode) setMode(e.detail.mode);
+        };
+        window.addEventListener('theme-change', handleTheme);
+        return () => window.removeEventListener('theme-change', handleTheme);
+    }, []);
 
     const activeData = menuData[mode];
     const isMorning = mode === 'morning';

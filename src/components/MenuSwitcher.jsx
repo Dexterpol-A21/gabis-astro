@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 
 const MenuSwitcher = () => {
-    const [mode, setMode] = useState('morning'); // Default to morning
+    const [mode, setMode] = useState('morning');
 
     useEffect(() => {
-        // Initial check
+        // Sync immediately on mount
         const isDark = document.documentElement.classList.contains('dark');
         setMode(isDark ? 'night' : 'morning');
 

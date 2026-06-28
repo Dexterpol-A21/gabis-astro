@@ -2,54 +2,56 @@ export const menuData = {
   morning: {
     title: "EL SOL SALE CON SABOR",
     subtitle: "07:00 - 16:00",
-    description: "Birria de res, quesabirria, birriamen y café de grano.",
+    description: "Birria de res, quesabirria, birriamen y cafe de grano.",
     theme: "morning",
     categories: [
       {
         name: "Caldos y Ramen",
         items: [
-          { name: "Plato de Birria", price: "$130", description: "La especialidad de la casa. Carne suavecita con su consomé tradicional, cilantro, cebolla y tortillas." },
-          { name: "Birriamen", price: "$145", description: "La fusión favorita: Fideos estilo ramen preparados con el sabor único de nuestra birria de res." },
-          { name: "Paquete Familiar", price: "$750", description: "Todo listo para compartir: 1kg de Birria, 2L de consomé, 1kg de tortillas, verdura y salsas." },
+          { name: "Plato de Birria", price: "$140", description: "La especialidad de la casa. Carne de res cocida a fuego lento en un consomé especiado, servida con cilantro, cebolla picada y tortillas calientes. El sabor que nos define." },
+          { name: "Birriamen", price: "$155", description: "Fideos estilo ramen bañados en nuestro consomé de birria. Una fusión caldosa, intensa y reconfortante que no encuentras en otro lado." },
+          { name: "Paquete Familiar", price: "$760", description: "Todo listo para compartir en casa. Incluye 1kg de birria, 2L de consomé, 1kg de tortillas, verdura fresca y salsas. También disponible en Medio Paquete." },
+          { name: "Medio Paquete Familiar", price: "$400", description: "La mitad del Paquete Familiar para compartir sin quedarte corto. Incluye 500g de birria, 500g de tortillas, 1L de consomé, verdura y salsas." },
         ]
       },
       {
         name: "Quesabirrias y Tacos",
         description: "¡Incluye Consomé!",
         items: [
-          { name: "Tacos de Birria", price: "$35 / $90", description: "Sencillo ($35) o Orden de 3 ($90). Con todo el sabor tradicional." },
-          { name: "Quesabirria", price: "$50", description: "Tortilla doradita, queso fundido y carne de birria." },
+          { name: "Tacos de Birria", price: "$36 / $92", description: "Tortilla bañada en consomé y dorada al comal, rellena de birria jugosa. Pidelo sencillo o en orden de 3. Cada taco viene con su consomé." },
+          { name: "Quesabirria", price: "$55", description: "Tortilla dorada y crujiente por fuera, queso fundido y birria por dentro. La muerdes y se deshace. Incluye consomé para remojar." },
+          { name: "Orden Quesabirrias (2pz)", price: "$100", description: "Dos quesabirrias bien servidas, doble queso, doble birria, doble consomé. Para cuando una no es suficiente." },
         ]
       },
       {
         name: "Almuerzos y Antojos",
         items: [
-          { name: "Molletes", price: "$110", description: "Orden de 3. Tostadito con frijoles y queso. A elegir: Birria, Tocino o Sencillos." },
-          { name: "Sincronizada", price: "$45 / $85", description: "Tortilla de harina con jamón y queso. Individual ($45) u Orden de 2 ($85)." },
+          { name: "Molletes", price: "$115", description: "Orden de 3. Pan tostado con frijoles refritos y queso gratinado. Elige tu estilo: con Birria, Tocino o Sencillos. Perfectos para empezar el dia." },
+          { name: "Sincronizada", price: "$45 / $85", description: "Tortilla de harina rellena de jamon y queso derretido, dorada al comal. Individual o en orden de 2. Simple, sabrosa, de toda la vida." },
         ]
       },
       {
-        name: "Cafetería y Desayunos",
+        name: "Cafeteria y Desayunos",
         items: [
-          { name: "Hotcakes Tradicionales", price: "$65", description: "3 piezas. Esponjosos. Servidos con mantequilla y miel." },
-          { name: "Hotcakes Especiales", price: "$85", description: "3 piezas. Servidos con tu topping favorito: Nutella, Philadelphia o Tocino." },
-          { name: "Latte Macchiato", price: "$40", description: "De grano." },
-          { name: "Americano Doble", price: "$40", description: "De grano." },
-          { name: "Cappuccino", price: "$35", description: "De grano." },
-          { name: "Café Americano", price: "$30", description: "De grano." },
-          { name: "Espresso", price: "$25", description: "De grano." },
-          { name: "Nescafé", price: "$20", description: "Clásico." },
-          { name: "Combo Nescafé + Pan", price: "$25", description: "Nescafé y una pieza de Mini Pan." },
-          { name: "Mini Pan", price: "$10", description: "Pieza individual." },
-          { name: "Flan Casero", price: "$40", description: "Postre." },
-          { name: "Refrescos", price: "$27", description: "Coca-Cola, Sprite, Ciel, Sidral, Del Valle." },
+          { name: "Hotcakes Tradicionales", price: "$75", description: "3 piezas esponjosas hechas al momento. Servidas calientes con mantequilla y miel. El desayuno dulce que nunca falla." },
+          { name: "Hotcakes Especiales", price: "$95", description: "3 piezas con topping a tu gusto: Nutella, Philadelphia o Tocino. Porque los hotcakes tambien merecen celebrarse." },
+          { name: "Latte Macchiato", price: "$45", description: "Cafe de grano con leche texturizada, servido en capas. Suave, cremoso y con caracter." },
+          { name: "Americano Doble", price: "$45", description: "Doble carga de cafe de grano. Intenso, limpio y sin prisas." },
+          { name: "Cappuccino", price: "$40", description: "Cafe de grano con leche espumada. El equilibrio justo entre cuerpo y suavidad." },
+          { name: "Cafe Americano", price: "$35", description: "Cafe de grano servido largo. Ligero pero con presencia. Ideal para acompañar cualquier desayuno." },
+          { name: "Espresso", price: "$35", description: "Cafe de grano concentrado. Pequeño, potente y directo. Para los que van al grano." },
+          { name: "Nescafe", price: "$25", description: "El clasico de siempre, rapido y calientito. Para cuando quieres algo sencillo y bueno." },
+          { name: "Combo Nescafe + Pan", price: "$30", description: "Nescafe acompañado de una pieza de Mini Pan. El duo perfecto para una pausa sin complicaciones." },
+          { name: "Mini Pan", price: "$12", description: "Pieza individual de pan dulce. Perfecto para acompañar tu cafe o para un antojo ligero." },
+          { name: "Flan Napolitano", price: "$45", description: "Receta casera, cremoso y con caramelo dorado. Hecho aqui, con la textura que solo lo hecho en casa tiene." },
+          { name: "Refrescos", price: "$30", description: "Coca-Cola, Sprite, Sidral, Fanta y mas de la familia Coca-Cola. Bien frios." },
         ]
       },
       {
         name: "Sueros",
         items: [
-          { name: "Suero Mineral", price: "$35", description: "Preparado con agua mineral, limón y sal. El clásico rehidratante.", image: "/images/manana/sueromineralNoF.png" },
-          { name: "Suero Clamato", price: "$55", description: "Preparado con clamato, limón y salsas. El balance ideal entre picosito y refrescante.", image: "/images/manana/sueroclamatoNoF.png" },
+          { name: "Suero Mineral", price: "$45", description: "Agua mineral con limon y sal. El clasico rehidratante que levanta a cualquiera.", image: "/images/manana/sueromineralNoF.webp" },
+          { name: "Suero Clamato", price: "$65", description: "Clamato preparado. Balance perfecto entre picosito y refrescante. Bebida refrescante preparada al momento.", image: "/images/manana/sueroclamatoNoF.webp" },
         ]
       }
     ]
@@ -62,60 +64,65 @@ export const menuData = {
     categories: [
       {
         name: "HAMBURGUESAS",
-        note: "Todas incluyen papas a la francesa.",
         items: [
-          { name: "Sencilla", price: "$65 / $85", description: "Carne de res (130g) cocinada al momento con doble queso: americano y manchego." },
-          { name: "Bacon", price: "$72 / $92", description: "Carne de res (130g) con tocino crujiente, gratinada con queso americano y manchego." },
-          { name: "Hawaiana", price: "$72 / $92", description: "Carne de res (130g) con jamón Virginia, piña asada y doble queso." },
-          { name: "Especial", price: "$90 / $110", description: "La reina. Carne (130g) con tocino, jamón, salchicha y doble queso." },
-          { name: "Sliders", price: "$125", description: "Trío de mini hamburguesas con queso, tocino y BBQ. ¡Perfectas para compartir!" }
+          { name: "Sencilla", price: "$70 / $90", description: "Carne de res (130g) cocinada en plancha al momento, con doble queso americano y manchego gratinado. Servida en pan suave con lechuga fresca, jitomate, cebolla y aderezos." },
+          { name: "Bacon", price: "$75 / $95", description: "Carne de res (130g) con tocino crujiente, doble queso americano y manchego derretido. Servida en pan con lechuga, jitomate, cebolla y aderezos." },
+          { name: "Hawaiana", price: "$75 / $95", description: "Carne de res (130g) con jamon Virginia y piña asada, gratinada con doble queso. El contraste dulce-salado que se volvio favorito." },
+          { name: "Especial", price: "$95 / $115", description: "La reina de la casa. Carne (130g) con tocino, jamon, salchicha y doble queso. Servida en pan con lechuga, jitomate, cebolla y aderezos. Lleva de todo." },
+          { name: "Sliders", price: "$130", description: "Trio de mini hamburguesas con carne, queso, tocino y salsa BBQ. Incluyen papas. Perfectas para compartir, imposible comerse solo una." }
+        ],
+        extras: [
+          { name: "Ingrediente extra", price: "$7", description: "Piña, jamon, tocino o salchicha." },
+          { name: "Carne extra", price: "$22", description: "Carne adicional de res (130g)." },
+          { name: "Añade papas", price: "$16", description: "Papas a la francesa para acompañar tu hamburguesa o hotdog." }
         ]
       },
       {
         name: "ALITAS & BONELESS",
         note: "Incluyen papas. Elige tu salsa favorita.",
         items: [
-          { name: "Orden de Alitas", price: "$90", description: "6 piezas. Alitas fritas y crujientes, bañadas en tu salsa favorita." },
-          { name: "Boneless", price: "$95", description: "6 piezas. Trozos de pechuga jugosos (sin hueso), empanizados." }
+          { name: "Orden de Alitas", price: "$95", description: "6 alitas fritas y crujientes por fuera, jugosas por dentro. Bañadas en la salsa que tu elijas y servidas con porcion de papas." },
+          { name: "Boneless", price: "$100", description: "6 piezas de pechuga empanizada, sin hueso. Dorados y jugosos, acompañados de papas y tu salsa favorita." }
         ],
         extras: [
-          "Salsas: BBQ, Original, Negra Especial, Búfalo, Spicy, Habanero Mango"
+          "Salsas: BBQ, Original, Negra Especial, Bufalo, Spicy, Habanero Mango"
         ]
       },
       {
         name: "SNACKS Y PAPAS",
         items: [
-          { name: "Papas Bacon", price: "$55", description: "Papas a la francesa con queso amarillo líquido, trozos de tocino y salsa BBQ." },
-          { name: "Orden Papas Francesas", price: "$45", description: "La orden clásica. Doraditas, con queso amarillo, catsup y salsa picante." },
-          { name: "Salchipulpos", price: "$65", description: "8 piezas de salchicha acompañadas de papas. Para los peques (o no tanto)." }
+          { name: "Papas Bacon", price: "$65", description: "Papas a la francesa bañadas en queso amarillo liquido, con trozos de tocino crujiente y salsa BBQ. Un antojo que no se comparte." },
+          { name: "Orden Papas Francesas", price: "$55", description: "La orden clasica. Papas doraditas servidas con queso amarillo, catsup y salsa picante. El acompañante perfecto." },
+          { name: "Salchipulpos", price: "$75", description: "8 salchichas cortadas y fritas, acompañadas de papas. Para los peques, los no tan peques y cualquiera con ganas de algo divertido." }
         ]
       },
       {
         name: "JOCHOS Y BEBIDAS",
         items: [
-          { name: "Jumbo Clásico", price: "$35", description: "Salchicha de pavo jumbo, jitomate, cebolla, mostaza y catsup." },
-          { name: "Jumbo Bacon", price: "$40", description: "Envuelto en tocino crujiente, con queso y vegetales." },
-          { name: "Flan Napolitano", price: "$40", description: "Pieza individual. Receta casera, cremoso y con caramelo." },
-          { name: "Refrescos", price: "$27", description: "355ml. Coca-Cola, Sprite, Sidral, Mundet, Manzana." }
+          { name: "Jumbo Clasico", price: "$50", description: "Salchicha de pavo jumbo en pan suave, con jitomate fresco, cebolla, mostaza y catsup. El hotdog de toda la vida." },
+          { name: "Jumbo Bacon", price: "$55", description: "Salchicha de pavo jumbo envuelta en tocino crujiente, con queso, vegetales frescos y aderezos. Un upgrade que vale la pena." },
+          { name: "Flan Napolitano", price: "$45", description: "Receta casera, cremoso y con caramelo dorado. Hecho aqui, con la textura que solo lo hecho en casa tiene." },
+          { name: "Refrescos", price: "$30", description: "Coca-Cola, Sprite, Sidral, Fanta y mas de la familia Coca-Cola. Bien frios." },
+          { name: "Combo Nescafe + Pan", price: "$30", description: "Nescafe acompañado de una pieza de Mini Pan. El duo perfecto para una pausa sin complicaciones." }
         ]
       },
       {
-        name: "CAFETERÍA",
+        name: "CAFETERIA",
         items: [
-          { name: "Latte Macchiato", price: "$40", description: "De grano." },
-          { name: "Americano Doble", price: "$40", description: "De grano." },
-          { name: "Cappuccino", price: "$35", description: "De grano." },
-          { name: "Café Americano", price: "$30", description: "De grano." },
-          { name: "Espresso", price: "$25", description: "De grano. Intenso." },
-          { name: "Nescafé", price: "$20", description: "Soluble tradicional." },
-          { name: "Mini Pan", price: "$10", description: "Pieza dulce." }
+          { name: "Latte Macchiato", price: "$45", description: "Cafe de grano con leche texturizada, servido en capas. Suave, cremoso y con caracter." },
+          { name: "Americano Doble", price: "$45", description: "Doble carga de cafe de grano. Intenso, limpio y sin prisas." },
+          { name: "Cappuccino", price: "$40", description: "Cafe de grano con leche espumada. El equilibrio justo entre cuerpo y suavidad." },
+          { name: "Cafe Americano", price: "$35", description: "Cafe de grano servido largo. Ligero pero con presencia. Ideal para cerrar la noche." },
+          { name: "Espresso", price: "$35", description: "Cafe de grano concentrado. Pequeño, potente y directo. Para los que van al grano." },
+          { name: "Nescafe", price: "$25", description: "El clasico de siempre, rapido y calientito. Para cuando quieres algo sencillo y bueno." },
+          { name: "Mini Pan", price: "$12", description: "Pieza individual de pan dulce. El antojo perfecto para cerrar la cena." }
         ]
       },
       {
         name: "SUEROS",
         items: [
-          { name: "Suero Mineral", price: "$35", description: "Preparado con agua mineral, limón y sal. El clásico rehidratante.", image: "/images/manana/sueromineralNoF.png" },
-          { name: "Suero Clamato", price: "$55", description: "Preparado con clamato, limón y salsas. El balance ideal entre picosito y refrescante.", image: "/images/manana/sueroclamatoNoF.png" },
+          { name: "Suero Mineral", price: "$45", description: "Agua mineral con limon y sal. El clasico rehidratante que levanta a cualquiera.", image: "/images/manana/sueromineralNoF.webp" },
+          { name: "Suero Clamato", price: "$65", description: "Clamato preparado. Balance perfecto entre picosito y refrescante. Bebida refrescante preparada al momento.", image: "/images/manana/sueroclamatoNoF.webp" },
         ]
       }
     ]
